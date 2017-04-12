@@ -1,0 +1,65 @@
+SCC = This is a Source Code Control file
+
+[FileClient.dsp]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[FileClient.vcproj]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[HelloClient.dsp]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[HelloClient.vcproj]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[HelloServer.dsp]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[HelloServer.vcproj]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[TestBase64Client.dsp]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[TestBase64Client.vcproj]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[TestBase64Server.dsp]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[TestBase64Server.vcproj]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[TestValues.dsp]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[TestValues.vcproj]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[TestXml.dsp]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[TestXml.vcproj]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[Validator.dsp]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
+
+[Validator.vcproj]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/SoftSwitch/sems-1.6.0/apps/xmlrpc2di/xmlrpc++/test", WTBAAAAA
