@@ -38,7 +38,6 @@
 #include <string.h>
 #include <assert.h>
 #include <errno.h>
-#include <math.h>
 
 #include <typeinfo>
 
@@ -241,7 +240,7 @@ unsigned int AmInternalResamplerState::resample(unsigned char *samples, unsigned
   //DBG("Resampling with ration %f", ratio);
   //DBG("Putting %d samples in the buffer", PCM16_B2S(s));
   rstate->put_samples((signed short *)samples, PCM16_B2S(s));
-  s = rstate->resample((signed short *)samples, ratio, ceil(PCM16_B2S(s) * ratio));
+  s = rstate->resample((signed short *)samples, ratio, PCM16_B2S(s) * ratio);
   //DBG("Returning %d samples", s);
   return PCM16_S2B(s);
 }
