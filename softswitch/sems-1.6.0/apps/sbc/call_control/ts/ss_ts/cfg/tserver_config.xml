@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <!--
+  约定 AppID = AppType * 10 ~  (AppType * 10) + 9
+  约定 AppType = UNKNOW = 0,
+                 TSERVER = 1,
+                 CTI = 2,
+                 ACD = 3,
+                 AGENT = 4,
+                 TTS = 5,
+                 VOICE = 6,
+                 FAX = 7
+  -->
+  
+  <AppInfo AppName="TServer" AppID="13"  AppType="1" AppGroupID="2" MasterFlag ="0" ListenPort="0" AppThreadPoolSize ="3" />
+  <ComLibParams MulticatePort="12815" MulticateIP="224.12.8.13" ConnectPassWord="kfpc"  ThreadPoolSize="0" KeepLiveTime="600" KeepLiveCount ="10" MaxSocketCount="0"  MsgFilterCount="0" OutPutMode="0" FileLogLevel="0" ConsoleLogLevel="0"/>
+  
+  <Log OutPutMode="3" FileLogLevel="1" ConsoleLogLevel="1"/>
+  <RemoteLicense IP="cloudshare.f3322.org" AppID="102" />
+
+  <TrunkGroupMgr>
+    <!--  Node0-->
+    <!--  0-AG-3 4-DTI-251 252-VOIP-315 -->
+    <!--  0*模拟通道最大Span是3  4*数字中继范围251 252*SIP中继最大315  -->
+
+    <!--  最大支持EH交换机节点 2 		-->
+    <!--  单节点最大模拟中继数 4 		-->
+    <!--  单节点最大数字中继数 248 	-->
+    <!--  单节点最大VOIP中继数 64 	-->
+    <!--  单节点最大会议中继数 64 	-->
+    
+    <!--中继组配置-->    
+    <!--Flag 是生效标志有Disable和Enable-->
+    <TrunkGroup Name="AG"   Description="节点0模拟线" AddPrefix="" StripPrefix="">      
+      <ChannelBlock BeginSpan="0"	BeginChannel="0"	EndSpan="3"	EndChannel="31"	IdleType="W" Flag="Enable"/>      
+    </TrunkGroup>
+  
+    <TrunkGroup Name="PSTN" Description="节点0数字中继" CallerNOA="4" CalledNOA="4">
+      <ChannelBlock BeginSpan="4"	BeginChannel="0"	EndSpan="251"	EndChannel="31"	IdleType="W" Flag="Enable"/>
+    </TrunkGroup>
+    
+    <TrunkGroup Name="SIP"   Description="节点0 VOIP通道" AutoAnswer="1" Support183="Enable">
+      <ChannelBlock BeginSpan="252"	BeginChannel="0"	EndSpan="315"	EndChannel="31"	IdleType="W" Flag="Enable"/>
+
+      <SIPCallOut IP="10.10.10.254" Port="5060" UserName="996666" PassWord="1234" Proxy="" Flag="Enable"/>
+      <SIPCallOffer  IP="192.168.1.0" Mask="255.255.255.0"   Flag="Enable"/>
+      <SIPCallOffer  IP="10.10.10.0" Mask="255.255.255.0"   Flag="Enable"/>
+      <AudioCode Codes ="G711_ALAW,  G729,G726_16"  Flag="Enable"/>
+    </TrunkGroup>
+
+    <!--LocalRtp="EH|MediaServer|NoRtp"-->
+    
+    <TrunkGroup Name="SIP1"   Description="节点1 VOIP通道" SIPServer="1" LocalRtp="EH">
+      <ChannelBlock BeginSpan="632"	BeginChannel="0"	EndSpan="695"	EndChannel="31"	IdleType="W" Flag="Enable"/>
+
+      <CallOutMode Value="0" />
+            
+      <SIPCallOut IP="10.10.10.254" Port="5060" UserName="996666" PassWord="1234" NodeID="" Flag="Enable"/>
+      <SIPCallOffer  IP="192.168.1.0" Mask="255.255.255.0"   Flag="Enable"/>
+      <SIPCallOffer  IP="10.10.10.0" Mask="255.255.255.0"   Flag="Enable"/>
+      <AudioCode Codes ="G711_ALAW,  G729,G726_16"  Flag="Enable"/>
+    </TrunkGroup>
+
+    <!--  Node1-->
+    <!--  380-AG-383 384-DTI-631 632-VOIP-695 -->
+    <!--  380*模拟通道最大Span是383  384*数字中继范围631 632*SIP中继最大695  -->
+    
+  </TrunkGroupMgr>
+
+  <SipRegisterList ReregisterInterval="600" FailRegisterInterval="5">
+    <!--上的时间单位是秒-->
+    <!--<SIP注册列表>-->
+    <SipAccount ID="0"  NodeID ="0" BRD="0" Domain="10.10.10.254" Port="5060"  UserName="996665" PassWord="1234" Expires="3600" Proxy="" Flag="Enable" />
+    <SipAccount ID="1"  NodeID ="1" BRD="0" Domain="10.10.10.254" Port="5060"  UserName="996666" PassWord="1234" Expires="3600" Proxy="" Flag="Enable" />
+  </SipRegisterList>
+
+
+  <!--
+    数据访问配置:
+    DataSource:ODBC数据源
+    UserName:访问数据库的用户名
+    Passwd:访问数据库的用户密码
+    DataBaseType:数据类型,可取值为MySql,MSSql,ORACLE
+    ThreadPool:线程池大小(取1到255的整数,默认为5个)
+  -->
+  <Database DataSource="ContactCenter" UserName="ContactCenter" Passwd="kfpc_cc" DataBaseType="MySql" ThreadPoolSize="1" SQLDebug="1"/>
+  
+  <AGC Valid ="1" Active = "1" GainSlop = "3" Redirection = "1" TargetEnergy = "40" />
+  <EchoCancel Valid="1" />
+
+  <Conference Valid ="1" Direction="2" Volume="20" />
+
+  <MSML ConferenceSize="5" />
+  
+  <CheckinvalidCallID Interval="600" LiveTime="600" />
+  <Monitor  StatInterval="1" />
+
+  <!--Mode="Conf","Mix"-->
+  
+  <Record Mode="Conf" TransformMp3="Enable" RecordAGC="-10"/>
+
+
+</Configuration>

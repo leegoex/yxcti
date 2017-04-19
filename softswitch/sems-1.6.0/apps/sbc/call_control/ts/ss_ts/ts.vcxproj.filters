@@ -1,0 +1,723 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="cfg">
+      <UniqueIdentifier>{9f5e05f7-e97b-4830-a108-6b1f3ea2ab85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kfpc_inc">
+      <UniqueIdentifier>{5de56852-3249-424e-b328-0bb33705adae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kfpc_public">
+      <UniqueIdentifier>{3ed07d78-f453-494b-8bb5-7f9a1168fd60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="kfpc_api">
+      <UniqueIdentifier>{3af8e79d-83f8-494a-96fa-b9ecd6a1cdb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Define">
+      <UniqueIdentifier>{7873bb36-87f2-4845-aaca-61ba1a406032}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="contact_center_public">
+      <UniqueIdentifier>{335842b8-3a73-4336-8a22-833941476850}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cfg_mod">
+      <UniqueIdentifier>{2e8dbc82-91f2-45f2-9023-a1d23e72ba96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="control">
+      <UniqueIdentifier>{71eae58d-05c0-401c-9771-91ec42701459}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="servermgr">
+      <UniqueIdentifier>{672dc875-dac3-40c5-bc75-e18d68c01472}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tinyxml">
+      <UniqueIdentifier>{cd353f62-3b8d-4366-ab66-62440a2ba7e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="apr1">
+      <UniqueIdentifier>{182ec715-81ff-4fa1-8b4b-bbdcab75800e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="apr1\include">
+      <UniqueIdentifier>{56c1d2fe-12ac-4ddd-807a-e36e5bd5d5fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSSL-Win32">
+      <UniqueIdentifier>{2209762f-4925-4738-b96b-570ebabcf1e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OpenSSL-Win32\include">
+      <UniqueIdentifier>{e7094b2f-f5d5-48c5-9edf-a71fa983a75c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="kfpc_inc\kfpc_api.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_inc\kfpc_comapierr.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_inc\KFPC_EH_MsgID.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_inc\kfpc_error.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_inc\kfpc_id.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_inc\kfpc_licenseser_api.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_inc\kfpc_msg.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_inc\kfpc_tserver_api.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_inc\KFPC_TServerErr.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_inc\kfpc_voiceser_api.h">
+      <Filter>kfpc_inc</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_compressfiletask.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_getmac.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_guid.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_linuxwinapi.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_linuxwinnet.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_log.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_mempool.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_scanlogpath.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_scanuncompressedlogfiletask.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_sn32.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_sn64.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_threadpool.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_threadtask.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_threadtaskqueue.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_time.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_timeouttask.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_timer.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\kfpc_timerthreadpool.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_public\md5.h">
+      <Filter>kfpc_public</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_TServerDef.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_CallAlarmMgr.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_Channel.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_CheckInvalidCallID.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_ChMgr.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_MonitorChMgr.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_MonitorRefreshData.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_TServerMain.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_api\KFPC_ComApiHanderImp.h">
+      <Filter>kfpc_api</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_api\KFPC_TServerAPIHandler.h">
+      <Filter>kfpc_api</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_api\KFPC_TServerAPIHandlerImp.h">
+      <Filter>kfpc_api</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_api\KFPC_TServerAPIPack.h">
+      <Filter>kfpc_api</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_api\KFPC_TSLicenseSerAPIHandlerImp.h">
+      <Filter>kfpc_api</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_api\KFPC_VoiceSerAPIHandlerImp.h">
+      <Filter>kfpc_api</Filter>
+    </ClInclude>
+    <ClInclude Include="control\KFPC_BaseCommandSet.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="control\KFPC_CmdThreadtask.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="control\KFPC_CmdTimer.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\DataBaseAccess.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\hash.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFC_VoiceIDMgr.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_API_Handle.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_AppMainThread.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_BaseCmdMgr.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_BaseCommand.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_BaseCommandSetEx.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_ComApiHandler.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_CommonVoice.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_ConfigFile.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_ContactCenterPublicDef.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_DBAccessInfo.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_DBTask.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_DBTaskInsertCallAlarm.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_DBThreadPool.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_ExeCmdIDTask.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_LicCtrl.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_LinuxDaemon.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\kfpc_logex.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_LoopHandler.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_NumberAnalyse.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_Q850.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_SIPReasonStatus.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="contact_center_public\KFPC_StringUtils.h">
+      <Filter>contact_center_public</Filter>
+    </ClInclude>
+    <ClInclude Include="cfg_mod\KFPC_TrunkGroup.h">
+      <Filter>cfg_mod</Filter>
+    </ClInclude>
+    <ClInclude Include="cfg_mod\KFPC_TrunkGroupMgr.h">
+      <Filter>cfg_mod</Filter>
+    </ClInclude>
+    <ClInclude Include="cfg_mod\KFPC_TServerConfigFile.h">
+      <Filter>cfg_mod</Filter>
+    </ClInclude>
+    <ClInclude Include="servermgr\KFPC_TSLicSer.h">
+      <Filter>servermgr</Filter>
+    </ClInclude>
+    <ClInclude Include="servermgr\KFPC_TSLicSerMgr.h">
+      <Filter>servermgr</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\action_store.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\byte_stream.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\lex_token.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\lex_util.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\node_set.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\tinystr.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\tinyxml.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\tinyxpath_conf.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\tokenlist.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xpath_expression.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xpath_processor.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xpath_stack.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xpath_static.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xpath_stream.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml\xpath_syntax.h">
+      <Filter>tinyxml</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_allocator.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_atomic.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_dso.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_env.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_errno.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_file_info.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_file_io.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_fnmatch.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_general.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_getopt.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_global_mutex.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_hash.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_inherit.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_lib.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_mmap.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_network_io.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_poll.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_pools.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_portable.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_proc_mutex.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_random.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_ring.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_shm.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_signal.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_strings.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_support.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_tables.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_thread_cond.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_thread_mutex.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_thread_proc.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_thread_rwlock.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_time.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_user.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_version.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="apr1\include\apr_want.h">
+      <Filter>apr1\include</Filter>
+    </ClInclude>
+    <ClInclude Include="control\KFPC_CmdMgr.h">
+      <Filter>control</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_EH_ID2Str.h">
+      <Filter>Define</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_api\KFPC_LicenseSerAPIHandler.h">
+      <Filter>kfpc_api</Filter>
+    </ClInclude>
+    <ClInclude Include="kfpc_api\KFPC_VoiceSerAPIHandler.h">
+      <Filter>kfpc_api</Filter>
+    </ClInclude>
+    <ClInclude Include="servermgr\KFPC_VoiceSer.h">
+      <Filter>servermgr</Filter>
+    </ClInclude>
+    <ClInclude Include="servermgr\KFPC_VoiceSerMgr.h">
+      <Filter>servermgr</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_NodeMgr.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_EHNode.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_ConfChannel.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KFPC_ChRes.h">
+      <Filter>源文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="kfpc_inc\KFPC_EH_MsgID.c">
+      <Filter>kfpc_inc</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_inc\kfpc_error.c">
+      <Filter>kfpc_inc</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_inc\kfpc_id.c">
+      <Filter>kfpc_inc</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_compressfiletask.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_getmac.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_guid.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_linuxwinapi.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_linuxwinnet.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_log.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_mempool.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_scanlogpath.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_scanuncompressedlogfiletask.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_sn32.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_sn64.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_threadpool.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_threadtask.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_threadtaskqueue.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_time.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_timeouttask.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_timer.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\kfpc_timerthreadpool.cpp">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_public\md5.c">
+      <Filter>kfpc_public</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_TServerDef.cpp">
+      <Filter>Define</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_CallAlarmMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_Channel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_CheckInvalidCallID.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_ChMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_MonitorChMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_MonitorRefreshData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_TServer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_TServerMain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_api\KFPC_ComApiHanderImp.cpp">
+      <Filter>kfpc_api</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_api\KFPC_TServerAPIHandler.cpp">
+      <Filter>kfpc_api</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_api\KFPC_TServerAPIHandlerImp.cpp">
+      <Filter>kfpc_api</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_api\KFPC_TServerAPIPack.cpp">
+      <Filter>kfpc_api</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_api\KFPC_TSLicenseSerAPIHandlerImp.cpp">
+      <Filter>kfpc_api</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_api\KFPC_VoiceSerAPIHandlerImp.cpp">
+      <Filter>kfpc_api</Filter>
+    </ClCompile>
+    <ClCompile Include="control\KFPC_BaseCommandSet.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
+    <ClCompile Include="control\KFPC_CmdThreadtask.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
+    <ClCompile Include="control\KFPC_CmdTimer.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\DataBaseAccess.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\hash.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFC_VoiceIDMgr.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_API_Handle.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_AppMainThread.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_BaseCmdMgr.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_BaseCommand.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_BaseCommandSetEx.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_ComApiHandler.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_CommonVoice.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_ConfigFile.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_ContactCenterPublicDef.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_DBAccessInfo.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_DBTask.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_DBThreadPool.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_ExeCmdIDTask.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_LicCtrl.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_LinuxDaemon.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_LoopHandler.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_NumberAnalyse.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="contact_center_public\KFPC_StringUtils.cpp">
+      <Filter>contact_center_public</Filter>
+    </ClCompile>
+    <ClCompile Include="cfg_mod\KFPC_TrunkGroup.cpp">
+      <Filter>cfg_mod</Filter>
+    </ClCompile>
+    <ClCompile Include="cfg_mod\KFPC_TrunkGroupMgr.cpp">
+      <Filter>cfg_mod</Filter>
+    </ClCompile>
+    <ClCompile Include="cfg_mod\KFPC_TServerConfigFile.cpp">
+      <Filter>cfg_mod</Filter>
+    </ClCompile>
+    <ClCompile Include="servermgr\KFPC_TSLicSer.cpp">
+      <Filter>servermgr</Filter>
+    </ClCompile>
+    <ClCompile Include="servermgr\KFPC_TSLicSerMgr.cpp">
+      <Filter>servermgr</Filter>
+    </ClCompile>
+    <ClCompile Include="control\KFPC_CmdMgr.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_EH_ID2Str.cpp">
+      <Filter>Define</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_api\KFPC_LicenseSerAPIHandler.cpp">
+      <Filter>kfpc_api</Filter>
+    </ClCompile>
+    <ClCompile Include="kfpc_api\KFPC_VoiceSerAPIHandler.cpp">
+      <Filter>kfpc_api</Filter>
+    </ClCompile>
+    <ClCompile Include="servermgr\KFPC_VoiceSer.cpp">
+      <Filter>servermgr</Filter>
+    </ClCompile>
+    <ClCompile Include="servermgr\KFPC_VoiceSerMgr.cpp">
+      <Filter>servermgr</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_NodeMgr.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_EHNode.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_ConfChannel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KFPC_ChRes.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="tinyxml\tinyxpath.lib">
+      <Filter>tinyxml</Filter>
+    </Library>
+    <Library Include="tinyxml\tinyxpathd.lib">
+      <Filter>tinyxml</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="apr1\include\apr.h.in">
+      <Filter>apr1\include</Filter>
+    </None>
+    <None Include="apr1\include\apr.hnw">
+      <Filter>apr1\include</Filter>
+    </None>
+    <None Include="apr1\include\apr.hw">
+      <Filter>apr1\include</Filter>
+    </None>
+    <None Include="Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="cfg\ss_tserver_config.xml">
+      <Filter>cfg</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

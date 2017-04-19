@@ -1,0 +1,5 @@
+SCC = This is a Source Code Control file
+
+[ts.sln]
+SCC_Aux_Path = "\\192.168.1.2\SoftSwitch\vss"
+SCC_Project_Name = "$/ts.root/ss_ts", QGDAAAAA

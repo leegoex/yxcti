@@ -1,0 +1,362 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1150D98D-1278-49C9-8A0C-FF93A1BC02B2}</ProjectGuid>
+    <RootNamespace>ts</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <SccProjectName>"$/ts.root/ts", QGDAAAAA</SccProjectName>
+    <SccLocalPath>.</SccLocalPath>
+    <SccProvider>MSSCCI:Microsoft Visual SourceSafe</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v140</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>.\zlib;.\cfg_mod;.\contact_center_public;.\control;.\kfpc_api;.\kfpc_inc;.\kfpc_public;.\servermgr;.\tinyxml;.\apr1\include;.\;.\OpenSSL-Win32\include;.\iconv;.\libpcre++;$(IncludePath)</IncludePath>
+    <LibraryPath>.\apr1;.\iconv;.\libpcre++;.\OpenSSL-Win32\lib;.\zlib;.\tinyxml;.\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS;KFPC_LOG_OUTPUT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <StructMemberAlignment>4Bytes</StructMemberAlignment>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>kfpc_com.lib;libapr-1.lib;libiconv.lib;libpcre.lib;libeay32.lib;tinyxpathd.lib;zlib1.lib;iphlpapi.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="apr1\include\apr.h" />
+    <ClInclude Include="apr1\include\apr_allocator.h" />
+    <ClInclude Include="apr1\include\apr_atomic.h" />
+    <ClInclude Include="apr1\include\apr_dso.h" />
+    <ClInclude Include="apr1\include\apr_env.h" />
+    <ClInclude Include="apr1\include\apr_errno.h" />
+    <ClInclude Include="apr1\include\apr_file_info.h" />
+    <ClInclude Include="apr1\include\apr_file_io.h" />
+    <ClInclude Include="apr1\include\apr_fnmatch.h" />
+    <ClInclude Include="apr1\include\apr_general.h" />
+    <ClInclude Include="apr1\include\apr_getopt.h" />
+    <ClInclude Include="apr1\include\apr_global_mutex.h" />
+    <ClInclude Include="apr1\include\apr_hash.h" />
+    <ClInclude Include="apr1\include\apr_inherit.h" />
+    <ClInclude Include="apr1\include\apr_lib.h" />
+    <ClInclude Include="apr1\include\apr_mmap.h" />
+    <ClInclude Include="apr1\include\apr_network_io.h" />
+    <ClInclude Include="apr1\include\apr_poll.h" />
+    <ClInclude Include="apr1\include\apr_pools.h" />
+    <ClInclude Include="apr1\include\apr_portable.h" />
+    <ClInclude Include="apr1\include\apr_proc_mutex.h" />
+    <ClInclude Include="apr1\include\apr_random.h" />
+    <ClInclude Include="apr1\include\apr_ring.h" />
+    <ClInclude Include="apr1\include\apr_shm.h" />
+    <ClInclude Include="apr1\include\apr_signal.h" />
+    <ClInclude Include="apr1\include\apr_strings.h" />
+    <ClInclude Include="apr1\include\apr_support.h" />
+    <ClInclude Include="apr1\include\apr_tables.h" />
+    <ClInclude Include="apr1\include\apr_thread_cond.h" />
+    <ClInclude Include="apr1\include\apr_thread_mutex.h" />
+    <ClInclude Include="apr1\include\apr_thread_proc.h" />
+    <ClInclude Include="apr1\include\apr_thread_rwlock.h" />
+    <ClInclude Include="apr1\include\apr_time.h" />
+    <ClInclude Include="apr1\include\apr_user.h" />
+    <ClInclude Include="apr1\include\apr_version.h" />
+    <ClInclude Include="apr1\include\apr_want.h" />
+    <ClInclude Include="cfg_mod\KFPC_TrunkGroup.h" />
+    <ClInclude Include="cfg_mod\KFPC_TrunkGroupMgr.h" />
+    <ClInclude Include="cfg_mod\KFPC_TServerConfigFile.h" />
+    <ClInclude Include="contact_center_public\DataBaseAccess.h" />
+    <ClInclude Include="contact_center_public\hash.h" />
+    <ClInclude Include="contact_center_public\KFC_VoiceIDMgr.h" />
+    <ClInclude Include="contact_center_public\KFPC_API_Handle.h" />
+    <ClInclude Include="contact_center_public\KFPC_AppMainThread.h" />
+    <ClInclude Include="contact_center_public\KFPC_BaseCmdMgr.h" />
+    <ClInclude Include="contact_center_public\KFPC_BaseCommand.h" />
+    <ClInclude Include="contact_center_public\KFPC_BaseCommandSetEx.h" />
+    <ClInclude Include="contact_center_public\KFPC_ComApiHandler.h" />
+    <ClInclude Include="contact_center_public\KFPC_CommonVoice.h" />
+    <ClInclude Include="contact_center_public\KFPC_ConfigFile.h" />
+    <ClInclude Include="contact_center_public\KFPC_ContactCenterPublicDef.h" />
+    <ClInclude Include="contact_center_public\KFPC_DBAccessInfo.h" />
+    <ClInclude Include="contact_center_public\KFPC_DBTask.h" />
+    <ClInclude Include="contact_center_public\KFPC_DBTaskInsertCallAlarm.h" />
+    <ClInclude Include="contact_center_public\KFPC_DBThreadPool.h" />
+    <ClInclude Include="contact_center_public\KFPC_ExeCmdIDTask.h" />
+    <ClInclude Include="contact_center_public\KFPC_LicCtrl.h" />
+    <ClInclude Include="contact_center_public\KFPC_LinuxDaemon.h" />
+    <ClInclude Include="contact_center_public\kfpc_logex.h" />
+    <ClInclude Include="contact_center_public\KFPC_LoopHandler.h" />
+    <ClInclude Include="contact_center_public\KFPC_NumberAnalyse.h" />
+    <ClInclude Include="contact_center_public\KFPC_Q850.h" />
+    <ClInclude Include="contact_center_public\KFPC_SIPReasonStatus.h" />
+    <ClInclude Include="contact_center_public\KFPC_StringUtils.h" />
+    <ClInclude Include="control\KFPC_BaseCommandSet.h" />
+    <ClInclude Include="control\KFPC_CmdMgr.h" />
+    <ClInclude Include="control\KFPC_CmdThreadtask.h" />
+    <ClInclude Include="control\KFPC_CmdTimer.h" />
+    <ClInclude Include="kfpc_api\KFPC_ComApiHanderImp.h" />
+    <ClInclude Include="kfpc_api\KFPC_LicenseSerAPIHandler.h" />
+    <ClInclude Include="kfpc_api\KFPC_TServerAPIHandler.h" />
+    <ClInclude Include="kfpc_api\KFPC_TServerAPIHandlerImp.h" />
+    <ClInclude Include="kfpc_api\KFPC_TServerAPIPack.h" />
+    <ClInclude Include="kfpc_api\KFPC_TSLicenseSerAPIHandlerImp.h" />
+    <ClInclude Include="kfpc_api\KFPC_VoiceSerAPIHandler.h" />
+    <ClInclude Include="kfpc_api\KFPC_VoiceSerAPIHandlerImp.h" />
+    <ClInclude Include="KFPC_CallAlarmMgr.h" />
+    <ClInclude Include="KFPC_Channel.h" />
+    <ClInclude Include="KFPC_CheckInvalidCallID.h" />
+    <ClInclude Include="KFPC_ChMgr.h" />
+    <ClInclude Include="KFPC_ChRes.h" />
+    <ClInclude Include="KFPC_ConfChannel.h" />
+    <ClInclude Include="KFPC_EHNode.h" />
+    <ClInclude Include="KFPC_EH_ID2Str.h" />
+    <ClInclude Include="kfpc_inc\kfpc_api.h" />
+    <ClInclude Include="kfpc_inc\kfpc_comapierr.h" />
+    <ClInclude Include="kfpc_inc\KFPC_EH_MsgID.h" />
+    <ClInclude Include="kfpc_inc\kfpc_error.h" />
+    <ClInclude Include="kfpc_inc\kfpc_id.h" />
+    <ClInclude Include="kfpc_inc\kfpc_licenseser_api.h" />
+    <ClInclude Include="kfpc_inc\kfpc_msg.h" />
+    <ClInclude Include="kfpc_inc\KFPC_TServerErr.h" />
+    <ClInclude Include="kfpc_inc\kfpc_tserver_api.h" />
+    <ClInclude Include="kfpc_inc\kfpc_voiceser_api.h" />
+    <ClInclude Include="KFPC_MonitorChMgr.h" />
+    <ClInclude Include="KFPC_MonitorRefreshData.h" />
+    <ClInclude Include="KFPC_NodeMgr.h" />
+    <ClInclude Include="kfpc_public\kfpc_compressfiletask.h" />
+    <ClInclude Include="kfpc_public\kfpc_getmac.h" />
+    <ClInclude Include="kfpc_public\kfpc_guid.h" />
+    <ClInclude Include="kfpc_public\kfpc_linuxwinapi.h" />
+    <ClInclude Include="kfpc_public\kfpc_linuxwinnet.h" />
+    <ClInclude Include="kfpc_public\kfpc_log.h" />
+    <ClInclude Include="kfpc_public\kfpc_mempool.h" />
+    <ClInclude Include="kfpc_public\kfpc_scanlogpath.h" />
+    <ClInclude Include="kfpc_public\kfpc_scanuncompressedlogfiletask.h" />
+    <ClInclude Include="kfpc_public\kfpc_sn32.h" />
+    <ClInclude Include="kfpc_public\kfpc_sn64.h" />
+    <ClInclude Include="kfpc_public\kfpc_threadpool.h" />
+    <ClInclude Include="kfpc_public\kfpc_threadtask.h" />
+    <ClInclude Include="kfpc_public\kfpc_threadtaskqueue.h" />
+    <ClInclude Include="kfpc_public\kfpc_time.h" />
+    <ClInclude Include="kfpc_public\kfpc_timeouttask.h" />
+    <ClInclude Include="kfpc_public\kfpc_timer.h" />
+    <ClInclude Include="kfpc_public\kfpc_timerthreadpool.h" />
+    <ClInclude Include="kfpc_public\md5.h" />
+    <ClInclude Include="KFPC_TServerDef.h" />
+    <ClInclude Include="KFPC_TServerMain.h" />
+    <ClInclude Include="servermgr\KFPC_TSLicSer.h" />
+    <ClInclude Include="servermgr\KFPC_TSLicSerMgr.h" />
+    <ClInclude Include="servermgr\KFPC_VoiceSer.h" />
+    <ClInclude Include="servermgr\KFPC_VoiceSerMgr.h" />
+    <ClInclude Include="tinyxml\action_store.h" />
+    <ClInclude Include="tinyxml\byte_stream.h" />
+    <ClInclude Include="tinyxml\lex_token.h" />
+    <ClInclude Include="tinyxml\lex_util.h" />
+    <ClInclude Include="tinyxml\node_set.h" />
+    <ClInclude Include="tinyxml\tinystr.h" />
+    <ClInclude Include="tinyxml\tinyxml.h" />
+    <ClInclude Include="tinyxml\tinyxpath_conf.h" />
+    <ClInclude Include="tinyxml\tokenlist.h" />
+    <ClInclude Include="tinyxml\xpath_expression.h" />
+    <ClInclude Include="tinyxml\xpath_processor.h" />
+    <ClInclude Include="tinyxml\xpath_stack.h" />
+    <ClInclude Include="tinyxml\xpath_static.h" />
+    <ClInclude Include="tinyxml\xpath_stream.h" />
+    <ClInclude Include="tinyxml\xpath_syntax.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cfg_mod\KFPC_TrunkGroup.cpp" />
+    <ClCompile Include="cfg_mod\KFPC_TrunkGroupMgr.cpp" />
+    <ClCompile Include="cfg_mod\KFPC_TServerConfigFile.cpp" />
+    <ClCompile Include="contact_center_public\DataBaseAccess.cpp" />
+    <ClCompile Include="contact_center_public\hash.cpp" />
+    <ClCompile Include="contact_center_public\KFC_VoiceIDMgr.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_API_Handle.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_AppMainThread.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_BaseCmdMgr.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_BaseCommand.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_BaseCommandSetEx.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_ComApiHandler.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_CommonVoice.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_ConfigFile.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_ContactCenterPublicDef.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_DBAccessInfo.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_DBTask.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_DBThreadPool.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_ExeCmdIDTask.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_LicCtrl.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_LinuxDaemon.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_LoopHandler.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_NumberAnalyse.cpp" />
+    <ClCompile Include="contact_center_public\KFPC_StringUtils.cpp" />
+    <ClCompile Include="control\KFPC_BaseCommandSet.cpp" />
+    <ClCompile Include="control\KFPC_CmdMgr.cpp" />
+    <ClCompile Include="control\KFPC_CmdThreadtask.cpp" />
+    <ClCompile Include="control\KFPC_CmdTimer.cpp" />
+    <ClCompile Include="kfpc_api\KFPC_ComApiHanderImp.cpp" />
+    <ClCompile Include="kfpc_api\KFPC_LicenseSerAPIHandler.cpp" />
+    <ClCompile Include="kfpc_api\KFPC_TServerAPIHandler.cpp" />
+    <ClCompile Include="kfpc_api\KFPC_TServerAPIHandlerImp.cpp" />
+    <ClCompile Include="kfpc_api\KFPC_TServerAPIPack.cpp" />
+    <ClCompile Include="kfpc_api\KFPC_TSLicenseSerAPIHandlerImp.cpp" />
+    <ClCompile Include="kfpc_api\KFPC_VoiceSerAPIHandler.cpp" />
+    <ClCompile Include="kfpc_api\KFPC_VoiceSerAPIHandlerImp.cpp" />
+    <ClCompile Include="KFPC_CallAlarmMgr.cpp" />
+    <ClCompile Include="KFPC_Channel.cpp" />
+    <ClCompile Include="KFPC_CheckInvalidCallID.cpp" />
+    <ClCompile Include="KFPC_ChMgr.cpp" />
+    <ClCompile Include="KFPC_ChRes.cpp" />
+    <ClCompile Include="KFPC_ConfChannel.cpp" />
+    <ClCompile Include="KFPC_EHNode.cpp" />
+    <ClCompile Include="KFPC_EH_ID2Str.cpp" />
+    <ClCompile Include="kfpc_inc\KFPC_EH_MsgID.c" />
+    <ClCompile Include="kfpc_inc\kfpc_error.c" />
+    <ClCompile Include="kfpc_inc\kfpc_id.c" />
+    <ClCompile Include="KFPC_MonitorChMgr.cpp" />
+    <ClCompile Include="KFPC_MonitorRefreshData.cpp" />
+    <ClCompile Include="KFPC_NodeMgr.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_compressfiletask.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_getmac.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_guid.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_linuxwinapi.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_linuxwinnet.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_log.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_mempool.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_scanlogpath.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_scanuncompressedlogfiletask.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_sn32.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_sn64.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_threadpool.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_threadtask.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_threadtaskqueue.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_time.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_timeouttask.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_timer.cpp" />
+    <ClCompile Include="kfpc_public\kfpc_timerthreadpool.cpp" />
+    <ClCompile Include="kfpc_public\md5.c" />
+    <ClCompile Include="KFPC_TServer.cpp" />
+    <ClCompile Include="KFPC_TServerDef.cpp" />
+    <ClCompile Include="KFPC_TServerMain.cpp" />
+    <ClCompile Include="servermgr\KFPC_TSLicSer.cpp" />
+    <ClCompile Include="servermgr\KFPC_TSLicSerMgr.cpp" />
+    <ClCompile Include="servermgr\KFPC_VoiceSer.cpp" />
+    <ClCompile Include="servermgr\KFPC_VoiceSerMgr.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="tinyxml\tinyxpath.lib" />
+    <Library Include="tinyxml\tinyxpathd.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="apr1\include\apr.h.in" />
+    <None Include="apr1\include\apr.hnw" />
+    <None Include="apr1\include\apr.hw" />
+    <None Include="Makefile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="cfg\ss_tserver_config.xml" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
