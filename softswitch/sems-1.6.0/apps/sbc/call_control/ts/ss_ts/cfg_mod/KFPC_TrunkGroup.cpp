@@ -11,6 +11,8 @@
 #include <arpa/inet.h>
 #endif
 #include "KFPC_TServerAPIHandlerImp.h"
+#include "kfpc_sipserver_api.h"
+
 
 CChannelBlock::CChannelBlock()
 {
@@ -246,23 +248,43 @@ KFPC_SIP_Addr* KFPC_TrunkGroup::QueryFromAddr(const char* pIpAddr )
 //	return 0;
 //}
 
-void KFPC_TrunkGroup::AddAudioCode( unsigned int AudioCode )
+void KFPC_TrunkGroup::AddAudioCode( const char* CodeName )
 {
 
 	KFPC_AudioCode_List::iterator	BeginIter = m_AudioCodeList.begin();
 	KFPC_AudioCode_List::iterator	EndIter = m_AudioCodeList.end();
 
-	KFPC_AudioCode_List::iterator Iter = find(BeginIter,EndIter,AudioCode);
-
-	if(Iter == EndIter)
+	for (;BeginIter != EndIter;BeginIter++)
 	{
-		m_AudioCodeList.push_back(AudioCode);
+		if (BeginIter->CodeName == CodeName)
+		{
+			WARNING_LOG(0, "TrunkGroup name:%s,CodeName:%s already exist.", m_Name, CodeName);
+			return;
+		}
+	}
+
+	unsigned char CodeID = 0;
+
+	KFPC_SdpPayloadAttr_t* pSdpPayloadAttr = CodeNameToAudioPayloadAttrMap(CodeName, &CodeID);
+
+	if (NULL != pSdpPayloadAttr)
+	{
+		AudioCodeCfg_t	AudioCodeCfg = { CodeID,pSdpPayloadAttr->RtpPayload,pSdpPayloadAttr->RtpEnc };
+		m_AudioCodeList.push_back(AudioCodeCfg);
+
+		INFO_LOG(0, "Add TrunkGroup name:%s,CodeID:%u,CodeName:%s,PayloadType:%u,AudioCodeList size:%u.", 
+			m_Name, 
+			AudioCodeCfg.CodeID,
+			AudioCodeCfg.CodeName.c_str(),
+			AudioCodeCfg.PayloadType,
+			m_AudioCodeList.size());
 	}
 	else
 	{
-		WARNING_LOG(0,"TrunkGroup name:%s,AudioCode:%u already exist.",m_Name,AudioCode)
+		WARNING_LOG(0, "TrunkGroup name:%s,CodeName:%u not exist.", m_Name, CodeName);
 	}
 	
+
 }
 
 KFPC_AudioCode_List& KFPC_TrunkGroup::AudioCodeList()
@@ -1058,6 +1080,101 @@ void KFPC_TrunkGroup::SetLastChannelWithEvent( unsigned char nChannel, unsigned 
 	}
 }
 
+const AudioCodeCfg_t* KFPC_TrunkGroup::GetAudioCodeCfgByPayloadType(unsigned char PayloadType)
+{
+	KFPC_AudioCode_List::iterator	AudioCodeIter = m_AudioCodeList.begin();
+	for (; AudioCodeIter != m_AudioCodeList.end(); AudioCodeIter++)
+	{
+		if (AudioCodeIter->PayloadType == PayloadType)
+		{
+			return &(*AudioCodeIter);
+		}
+	}
+
+	return NULL;
+}
+
+const AudioCodeCfg_t* KFPC_TrunkGroup::GetAudioCodeCfgByCodeName(const string& CodeName)
+{
+	KFPC_AudioCode_List::iterator	AudioCodeIter = m_AudioCodeList.begin();
+	for (; AudioCodeIter != m_AudioCodeList.end(); AudioCodeIter++)
+	{
+		if (AudioCodeIter->CodeName == CodeName)
+		{
+			return &(*AudioCodeIter);
+		}
+	}
+
+	return NULL;
+}
+
+const AudioCodeCfg_t* KFPC_TrunkGroup::SelectMediaInfoFromSdp(KFPC_SdpInfo_t* pSdp, KFPC_SdpMedia_t** ppSdpStream)
+{
+	const AudioCodeCfg_t* pAudioCodeCfg = NULL;
+
+	DEBUG_LOG(0, "MediaNum:%u", pSdp->MediaNum);
+
+	for (unsigned int Inx = 0; Inx < pSdp->MediaNum; Inx++)
+	{
+		KFPC_SdpMedia_t* pSdpMedia = &pSdp->SdpMedia [Inx];
+
+		if (pSdpMedia->MediaType == KFPC_MediaType_audio)
+		{
+			*ppSdpStream = pSdpMedia;
+			DEBUG_LOG(0, "SdpPayloadAttrNum:%u", pSdpMedia->SdpPayloadAttrNum);
+			for (unsigned int i = 0; i < pSdpMedia->SdpPayloadAttrNum; i++)
+			{
+				DEBUG_LOG(0, "PayloadAttr[%u].RtpEnc:%s,RtpPayload:%u", i, 
+					pSdpMedia->PayloadAttr[i].RtpEnc.c_str(), pSdpMedia->PayloadAttr[i].RtpPayload);
+
+				if (pSdpMedia->PayloadAttr[i].MediaType == KFPC_MediaType_audio)
+				{
+					if (pSdpMedia->PayloadAttr[i].RtpPayload >= 96)
+					{
+						pAudioCodeCfg = GetAudioCodeCfgByCodeName(pSdpMedia->PayloadAttr[i].RtpEnc.c_str());
+					}
+					else
+					{
+						pAudioCodeCfg = GetAudioCodeCfgByPayloadType(pSdpMedia->PayloadAttr[i].RtpPayload);
+					}
+				}
+
+			}
+		}
+
+	}
+
+
+	if (NULL != pAudioCodeCfg)
+	{
+		DEBUG_LOG(0, "Matched CodeID:%u,PayloadType:%u,CodeName:%s",
+			pAudioCodeCfg->CodeID,
+			pAudioCodeCfg->PayloadType,
+			pAudioCodeCfg->CodeName.c_str());
+	}
+
+	return pAudioCodeCfg;
+}
+
+LocalRtp_t KFPC_TrunkGroup::SetLocalRtp(const char* str)
+{
+	if (strcmp(str, "Relay") == 0)
+	{
+		m_LocalRtp = LocalRtp_Relay;
+		return LocalRtp_Relay;
+	}
+	else if (strcmp(str, "Transcoding") == 0)
+	{
+		m_LocalRtp = LocalRtp_Transcoding;
+		return LocalRtp_Transcoding;
+	}
+	else
+	{
+		m_LocalRtp = LocalRtp_NoRtp;
+		return LocalRtp_NoRtp;
+	}
+}
+
 void KFPC_TrunkGroup::AddWatchAppID( unsigned int AppID )
 {
 	m_WatchAppIDList.push_back(AppID);
@@ -1107,24 +1224,24 @@ unsigned int KFPC_TrunkGroup::GetCallOfferAppID(unsigned int ChID)
 	}
 }
 
-bool KFPC_TrunkGroup::GetAllCodeList(unsigned char CodeIdList[], unsigned char* pCodeCount)
-{
-	if(m_AudioCodeList.empty())
-	{
-		return false;
-	}
-	*pCodeCount = m_AudioCodeList.size();
-	KFPC_AudioCode_List::iterator	BeginIter = m_AudioCodeList.begin();
-	//KFPC_AudioCode_List::iterator	EndIter = m_AudioCodeList.end();
-
-	KFPC_AudioCode_List::iterator Iter;
-	int i=0;
-	for(Iter = BeginIter; Iter != m_AudioCodeList.end(); Iter++)
-	{
-		CodeIdList[i++] = (*Iter);
-	}
-	return true;
-}
+//bool KFPC_TrunkGroup::GetAllCodeList(unsigned char CodeIdList[], unsigned char* pCodeCount)
+//{
+//	if(m_AudioCodeList.empty())
+//	{
+//		return false;
+//	}
+//	*pCodeCount = m_AudioCodeList.size();
+//	KFPC_AudioCode_List::iterator	BeginIter = m_AudioCodeList.begin();
+//	//KFPC_AudioCode_List::iterator	EndIter = m_AudioCodeList.end();
+//
+//	KFPC_AudioCode_List::iterator Iter;
+//	int i=0;
+//	for(Iter = BeginIter; Iter != m_AudioCodeList.end(); Iter++)
+//	{
+//		CodeIdList[i++] = (*Iter);
+//	}
+//	return true;
+//}
 
 void KFPC_TrunkGroup::Clear()
 {

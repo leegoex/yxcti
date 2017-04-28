@@ -1,7 +1,7 @@
 #include "KFPC_TServerConfigFile.h"
 #include "xpath_static.h"
 #include "kfpc_api.h"
-#include "KFPC_EH_ID2Str.h"
+#include "kfpc_sipserver_api.h"
 #include "KFPC_StringUtils.h"
 
 #include "kfpc_linuxwinnet.h"
@@ -25,120 +25,120 @@ m_EchoCancel(true)
 SS_TServerConfigFile::~SS_TServerConfigFile(void)
 {
 }
-
-unsigned int SS_TServerConfigFile::GeteHangComIp( char* Ip )
-{
-	if(m_ConfigFileLoadFlag)
-	{
-		if(NULL != Ip)
-		{
-			TiXmlNode *pNode = TinyXPath::XNp_xpath_node(m_ConfigDocument.RootElement(), NODE_EHANGCOM);
-			if(pNode == NULL)
-			{
-				WARNING_LOG(0,"Not found node[%s] in config file[%s].",NODE_EHANGCOM,GetFileName());
-				return -1;
-			}
-
-			TiXmlElement *pElement = pNode->ToElement();
-			if(pElement == NULL)
-			{
-				WARNING_LOG(0,"Not found effective element in node[%s].",NODE_EHANGCOM);
-				return -1;
-			}
-
-			const char *pEHangComIP = pElement->Attribute(ATTR_IP);
-			if(pEHangComIP == NULL)
-			{
-				WARNING_LOG(0,"Not found attribute[%s] in node[%s].",ATTR_IP,NODE_EHANGCOM);
-				return -1;
-			}
-
-			strncpy(Ip,pEHangComIP,KFPC_MAX_IP_LEN);
-			return 0;
-		}
-		else
-		{
-			WARNING_LOG(0,"Ip is invalid parameter.");
-			return -1;
-		}
-	}
-	else
-	{
-		WARNING_LOG(0,"Didn't load config file[%s].",GetFileName());
-		return -1;
-	}
-}
-
-unsigned int SS_TServerConfigFile::GeteHangComPort( unsigned int &Port )
-{
-	if(m_ConfigFileLoadFlag)
-	{
-		TiXmlNode *pNode = TinyXPath::XNp_xpath_node(m_ConfigDocument.RootElement(), NODE_EHANGCOM);
-		if(pNode == NULL)
-		{
-			WARNING_LOG(0,"Not found node[%s] in config file[%s].",NODE_EHANGCOM,GetFileName());
-			return -1;
-		}
-
-		TiXmlElement *pElement = pNode->ToElement();
-		if(pElement == NULL)
-		{
-			WARNING_LOG(0,"Not found effective element in node [%s].",NODE_EHANGCOM);
-			return -1;
-		}
-
-		const char *pEHangComPort = pElement->Attribute(ATTR_PORT);
-		if(pEHangComPort == NULL)
-		{
-			WARNING_LOG(0,"Not found attribute[%s] in node[%s].",ATTR_PORT,NODE_EHANGCOM);
-			return -1;
-		}
-
-		Port = atoi(pEHangComPort);
-		return 0;
-	}
-	else
-	{
-		WARNING_LOG(0,"Didn't load config file[%s].",GetFileName());
-		return -1;
-	}
-}
-
-unsigned int SS_TServerConfigFile::GeteHangComKeepAlive( unsigned int &KeepAlive )
-{
-	if(m_ConfigFileLoadFlag)
-	{
-		TiXmlNode *pNode = TinyXPath::XNp_xpath_node(m_ConfigDocument.RootElement(), NODE_EHANGCOM);
-		if(pNode == NULL)
-		{
-			WARNING_LOG(0,"Not found node[%s] in config file[%s].",NODE_EHANGCOM,GetFileName());
-			return -1;
-		}
-
-		TiXmlElement *pElement = pNode->ToElement();
-		if(pElement == NULL)
-		{
-			WARNING_LOG(0,"Not found effective element in node[%s].",NODE_EHANGCOM);
-			return -1;
-		}
-
-		const char *pEHangKeepAlive = pElement->Attribute(ATTR_EHANGCOMKEEPALIVE);
-		if(pEHangKeepAlive == NULL)
-		{
-			WARNING_LOG(0,"Not found attribute[%s] in node[%s].",ATTR_EHANGCOMKEEPALIVE,NODE_EHANGCOM);
-			return -1;
-		}
-
-		KeepAlive = atoi(pEHangKeepAlive);
-		return 0;
-	}
-	else
-	{
-		WARNING_LOG(0,"Didn't load config file[%s].",GetFileName());
-		return -1;
-	}
-}
-
+//
+//unsigned int SS_TServerConfigFile::GeteHangComIp( char* Ip )
+//{
+//	if(m_ConfigFileLoadFlag)
+//	{
+//		if(NULL != Ip)
+//		{
+//			TiXmlNode *pNode = TinyXPath::XNp_xpath_node(m_ConfigDocument.RootElement(), NODE_EHANGCOM);
+//			if(pNode == NULL)
+//			{
+//				WARNING_LOG(0,"Not found node[%s] in config file[%s].",NODE_EHANGCOM,GetFileName());
+//				return -1;
+//			}
+//
+//			TiXmlElement *pElement = pNode->ToElement();
+//			if(pElement == NULL)
+//			{
+//				WARNING_LOG(0,"Not found effective element in node[%s].",NODE_EHANGCOM);
+//				return -1;
+//			}
+//
+//			const char *pEHangComIP = pElement->Attribute(ATTR_IP);
+//			if(pEHangComIP == NULL)
+//			{
+//				WARNING_LOG(0,"Not found attribute[%s] in node[%s].",ATTR_IP,NODE_EHANGCOM);
+//				return -1;
+//			}
+//
+//			strncpy(Ip,pEHangComIP,KFPC_MAX_IP_LEN);
+//			return 0;
+//		}
+//		else
+//		{
+//			WARNING_LOG(0,"Ip is invalid parameter.");
+//			return -1;
+//		}
+//	}
+//	else
+//	{
+//		WARNING_LOG(0,"Didn't load config file[%s].",GetFileName());
+//		return -1;
+//	}
+//}
+//
+//unsigned int SS_TServerConfigFile::GeteHangComPort( unsigned int &Port )
+//{
+//	if(m_ConfigFileLoadFlag)
+//	{
+//		TiXmlNode *pNode = TinyXPath::XNp_xpath_node(m_ConfigDocument.RootElement(), NODE_EHANGCOM);
+//		if(pNode == NULL)
+//		{
+//			WARNING_LOG(0,"Not found node[%s] in config file[%s].",NODE_EHANGCOM,GetFileName());
+//			return -1;
+//		}
+//
+//		TiXmlElement *pElement = pNode->ToElement();
+//		if(pElement == NULL)
+//		{
+//			WARNING_LOG(0,"Not found effective element in node [%s].",NODE_EHANGCOM);
+//			return -1;
+//		}
+//
+//		const char *pEHangComPort = pElement->Attribute(ATTR_PORT);
+//		if(pEHangComPort == NULL)
+//		{
+//			WARNING_LOG(0,"Not found attribute[%s] in node[%s].",ATTR_PORT,NODE_EHANGCOM);
+//			return -1;
+//		}
+//
+//		Port = atoi(pEHangComPort);
+//		return 0;
+//	}
+//	else
+//	{
+//		WARNING_LOG(0,"Didn't load config file[%s].",GetFileName());
+//		return -1;
+//	}
+//}
+//
+//unsigned int SS_TServerConfigFile::GeteHangComKeepAlive( unsigned int &KeepAlive )
+//{
+//	if(m_ConfigFileLoadFlag)
+//	{
+//		TiXmlNode *pNode = TinyXPath::XNp_xpath_node(m_ConfigDocument.RootElement(), NODE_EHANGCOM);
+//		if(pNode == NULL)
+//		{
+//			WARNING_LOG(0,"Not found node[%s] in config file[%s].",NODE_EHANGCOM,GetFileName());
+//			return -1;
+//		}
+//
+//		TiXmlElement *pElement = pNode->ToElement();
+//		if(pElement == NULL)
+//		{
+//			WARNING_LOG(0,"Not found effective element in node[%s].",NODE_EHANGCOM);
+//			return -1;
+//		}
+//
+//		const char *pEHangKeepAlive = pElement->Attribute(ATTR_EHANGCOMKEEPALIVE);
+//		if(pEHangKeepAlive == NULL)
+//		{
+//			WARNING_LOG(0,"Not found attribute[%s] in node[%s].",ATTR_EHANGCOMKEEPALIVE,NODE_EHANGCOM);
+//			return -1;
+//		}
+//
+//		KeepAlive = atoi(pEHangKeepAlive);
+//		return 0;
+//	}
+//	else
+//	{
+//		WARNING_LOG(0,"Didn't load config file[%s].",GetFileName());
+//		return -1;
+//	}
+//}
+//
 
 void SS_TServerConfigFile::ConfigFileLoadSuccess()
 {
@@ -508,6 +508,12 @@ unsigned int SS_TServerConfigFile::GetChannelBlock(TiXmlElement *pElement,KFPC_T
 		if(pBeginSpan != NULL)
 		{
 			BeginSpan = atoi(pBeginSpan);
+
+			if (BeginSpan >= KFPC_SINGLE_NODE_MAX_VOIP_SPAN)
+			{
+				WARNING_LOG(0, "attribute[%s] in node[%s] BeginSpan:%u over max span:%u.", ATTR_BEGINSPAN, NODE_CHANNELBLOCK, BeginSpan, KFPC_SINGLE_NODE_MAX_VOIP_SPAN);
+				return 0;
+			}
 		}
 		else
 		{
@@ -517,6 +523,12 @@ unsigned int SS_TServerConfigFile::GetChannelBlock(TiXmlElement *pElement,KFPC_T
 		if(pBeginChannel != NULL)
 		{
 			BeginChannel = atoi(pBeginChannel);
+
+			if (BeginChannel >= KFPC_MAX_CHANNEL)
+			{
+				WARNING_LOG(0, "attribute[%s] in node[%s] BeginChannel:%u over max channel:%u.", ATTR_BEGINSPAN, NODE_CHANNELBLOCK, BeginChannel, KFPC_MAX_CHANNEL);
+				return 0;
+			}
 		}
 		else
 		{
@@ -526,6 +538,11 @@ unsigned int SS_TServerConfigFile::GetChannelBlock(TiXmlElement *pElement,KFPC_T
 		if(pEndSpan != NULL)
 		{
 			EndSpan = atoi(pEndSpan);
+			if (EndSpan >= KFPC_SINGLE_NODE_MAX_VOIP_SPAN)
+			{
+				WARNING_LOG(0, "attribute[%s] in node[%s] EndSpan:%u over max span:%u.", ATTR_BEGINSPAN, NODE_CHANNELBLOCK, EndSpan, KFPC_SINGLE_NODE_MAX_VOIP_SPAN);
+				return 0;
+			}
 		}
 		else
 		{
@@ -535,6 +552,11 @@ unsigned int SS_TServerConfigFile::GetChannelBlock(TiXmlElement *pElement,KFPC_T
 		if(pEndChannel != NULL)
 		{
 			EndChannel = atoi(pEndChannel);
+			if (EndChannel >= KFPC_MAX_CHANNEL)
+			{
+				WARNING_LOG(0, "attribute[%s] in node[%s] EndChannel:%u over max channel:%u.", ATTR_BEGINSPAN, NODE_CHANNELBLOCK, EndChannel, KFPC_MAX_CHANNEL);
+				return 0;
+			}
 		}
 		else
 		{
@@ -716,10 +738,10 @@ unsigned int SS_TServerConfigFile::GetAudioCode(TiXmlElement *pElement,KFPC_Trun
 				INFO_LOG(0,"Found Audio Code:%s", token);
 
 				Trim(token,' ');
-				unsigned short CodeID = StrToAudioCodeID(token);
-				if(CodeID >=0 )
+				
+				if(CheckPayloadType(token))
 				{		
-					pTrunkGroup->AddAudioCode(CodeID);
+					pTrunkGroup->AddAudioCode(token);
 				}
 				else
 				{

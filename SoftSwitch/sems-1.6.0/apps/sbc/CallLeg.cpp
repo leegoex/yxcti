@@ -54,7 +54,7 @@ static const char *callStatus2str(const CallLeg::CallStatus state)
     case CallLeg::Connected: return connected;
   }
 
-  return unknown;
+  return unknown; 
 }
 
 ReliableB2BEvent::~ReliableB2BEvent()
@@ -1757,3 +1757,4 @@ void CallLeg::resumeHeld()
 {
   updateSession(new ResumeHeld());
 }
+

@@ -7,7 +7,7 @@
 #include "KFPC_ContactCenterPublicDef.h"
 #include "KFPC_TServerDef.h"
 #include "KFPC_ChMgr.h"
-
+#include "kfpc_sipserver_api.h"
 #include <string>
 
 using namespace std ;
@@ -117,7 +117,10 @@ public:
 
 typedef vector<CChannelBlock>		ChannelBlock_t;
 typedef list<KFPC_SIP_Addr>			KFPC_SIP_Addr_List;
-typedef list<unsigned int>			KFPC_AudioCode_List;
+
+
+
+typedef list<AudioCodeCfg_t>		KFPC_AudioCode_List;
 
 typedef list<unsigned int>			KFPC_APPID_List;
 typedef	KFPC_APPID_List::iterator	KFPC_APPID_ListIter;
@@ -167,24 +170,12 @@ private:
 	bool				m_Old;					/**< 旧的，当标志为true时，将被删除 */
 
 public:
-	LocalRtp_t	SetLocalRtp(const char* str)
-	{
-		if(strcmp(str,"EH") == 0)
-		{
-			m_LocalRtp = LocalRtp_Relay;
-			return LocalRtp_Relay;
-		}
-		else if(strcmp(str,"MediaServer") == 0)
-		{
-			m_LocalRtp = LocalRtp_Transcoding;
-			return LocalRtp_Transcoding;
-		}
-		else
-		{
-			m_LocalRtp = LocalRtp_NoRtp;
-			return LocalRtp_NoRtp;
-		}
-	}
+	const AudioCodeCfg_t* GetAudioCodeCfgByPayloadType(unsigned char PayloadType);
+	const AudioCodeCfg_t* GetAudioCodeCfgByCodeName(const string& CodeName);
+
+	const AudioCodeCfg_t* SelectMediaInfoFromSdp(KFPC_SdpInfo_t*	pSdp, KFPC_SdpMedia_t** ppSdpStream);
+
+	LocalRtp_t	SetLocalRtp(const char* str);
 
 
 	LocalRtp_t GetLocalRtp() const { return m_LocalRtp; }
@@ -211,7 +202,7 @@ public:
 	//以下是VOIP路由参数
 	KFPC_SIP_Addr_List		m_SIPCallOfferList;			/**< 呼叫来电话的IP */
 	KFPC_SIP_Addr_List		m_SIPCallOutList;			/**< 呼叫来电话的IP */
-	KFPC_SIP_Addr_List& GetSIPCallOutList() { return m_SIPCallOutList; }
+	KFPC_SIP_Addr_List&		GetSIPCallOutList() { return m_SIPCallOutList; }
 
 	//KFPC_SIP_Addr			m_SIPCallOut;				/**< 呼叫呼出网关 */
 	KFPC_AudioCode_List		m_AudioCodeList;		/**< 编码地址 */
@@ -274,10 +265,10 @@ public:
 	int SetToAddr(const char* Ip,const char* pMask,unsigned short	Port,const char*	pUserName,const char*	pPassWord);
 	//KFPC_SIP_Addr* GetToAddr(){	return &m_SIPCallOut;}
 	
-	void AddAudioCode(unsigned int AudioCode);
+	void AddAudioCode(const char* AudioCode);
 	KFPC_AudioCode_List& AudioCodeList();
 
-	bool GetAllCodeList(unsigned char CodeIdList[], unsigned char* pCodeCount);
+	//bool GetAllCodeList(unsigned char CodeIdList[], unsigned char* pCodeCount);
 
 	/**
 	 * FullName:  	KFPC_TrunkGroupMgr::GetIdleChannelByNameEx
@@ -320,6 +311,7 @@ public:
 	void SetCalledNOA(unsigned char val) { m_CalledNOA = val; }
 	void log();
 };
+
 
 typedef vector<KFPC_TrunkGroup>				TrunkGroupList_t;
 typedef vector<KFPC_TrunkGroup>::iterator	TrunkGroupIterator_t;

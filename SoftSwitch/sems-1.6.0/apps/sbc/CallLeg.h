@@ -384,7 +384,7 @@ class CallLeg: public AmB2BSession
     CallLeg(const CallLeg* caller, AmSipDialog* p_dlg=NULL,
 	    AmSipSubscription* p_subs=NULL);
 
-    virtual ~CallLeg();
+    virtual ~CallLeg(); 
 
     // OA callbacks
     virtual int onSdpCompleted(const AmSdp& local, const AmSdp& remote);

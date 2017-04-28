@@ -14,20 +14,20 @@ KFPC_CmdMgr::KFPC_CmdMgr(void)
 KFPC_CmdMgr::~KFPC_CmdMgr(void)
 {
 }
-//
-//EH_Cmd_EVT_IncomingCall* KFPC_CmdMgr::Create_Cmd_EVT_IncomingCall( KFPC_Channel* pCh,KFPC_DEVICE& Device )
-//{
-//	//void* pMem = m_KFPC_MemPool.Alloc(sizeof(EH_Cmd_EVT_IncomingCall));
-//
-//	//EH_Cmd_EVT_IncomingCall* pCmd = new(pMem)EH_Cmd_EVT_IncomingCall(pCh);
-//	EH_Cmd_EVT_IncomingCall* pCmd = new EH_Cmd_EVT_IncomingCall(pCh->GetCallID(),0,0,0,Device);
-//
-//	m_CommandMap.insert(CommandMapPair_t(pCmd->GetID(),pCmd));
-//	INFO_LOG(pCh->GetCallID(),"ChID:%u,CmdID:%u,CommandMap size:%u.",pCh->GetID(),pCmd->GetID(),m_CommandMap.size());
-//
-//	return pCmd;
-//}
-//
+
+EH_Cmd_EVT_IncomingCall* KFPC_CmdMgr::Create_Cmd_EVT_IncomingCall( KFPC_Channel* pCh )
+{
+	//void* pMem = m_KFPC_MemPool.Alloc(sizeof(EH_Cmd_EVT_IncomingCall));
+
+	//EH_Cmd_EVT_IncomingCall* pCmd = new(pMem)EH_Cmd_EVT_IncomingCall(pCh);
+	EH_Cmd_EVT_IncomingCall* pCmd = new EH_Cmd_EVT_IncomingCall(pCh->GetCallID(),0,0,0);
+
+	m_CommandMap.insert(CommandMapPair_t(pCmd->GetID(),pCmd));
+	INFO_LOG(pCh->GetCallID(),"ChID:%u,CmdID:%u,CommandMap size:%u.",pCh->GetID(),pCmd->GetID(),m_CommandMap.size());
+
+	return pCmd;
+}
+
 //
 //
 //

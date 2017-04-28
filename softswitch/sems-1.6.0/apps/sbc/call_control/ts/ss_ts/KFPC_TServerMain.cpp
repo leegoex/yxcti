@@ -135,12 +135,12 @@ void* TServerMain(void*)
 	KFPC_CC_Loger()->SetProgramVersion("0.0.1");
 
 	KFPC_CC_Loger()->OpenThread();
-	KFPC_CC_Loger()->SetOutputMode(LOM_CONSOLE);
+	KFPC_CC_Loger()->SetOutputMode(LOM_FILE);
 
 
 	KFPC_CDR_Loger()->SetProgramVersion(",CallID,CallType,ChannelType,Span,TimeSlot,Caller,Called,TrunkGroup,InitTime,AnswerTime,ConnectTime,ReleaseTime,TalkTime,RemoteRelease,SessionCallID,IP,ConfCreator,Cause");
 	KFPC_CDR_Loger()->OpenThread();
-	KFPC_CDR_Loger()->SetOutputMode(LOM_CONSOLE);
+	KFPC_CDR_Loger()->SetOutputMode(LOM_FILE);
 	
 
 	INFO_LOG(0,"");

@@ -4,7 +4,7 @@
 #include "KFPC_BaseCommand.h"
 #include "kfpc_sn32.h"
 #include "KFPC_ChRes.h"
-
+#include "kfpc_sipserver_api.h"
 //#include "KFPC_TrunkGroup.h"
 
 //class KFPC_TrunkGroup;
@@ -17,6 +17,8 @@ private:
 	unsigned char		m_InsertDB;
 	unsigned short		m_ID;								/**< 通道ID */
 	KFPC_Ch_Status		m_Status;							/**< 通道状态 */
+
+
 	//KFPC_SignalType		m_SignalType;						/**< 信令类型 */
 	//KFPC_CH_TYPE		m_ChType;
 	
@@ -33,7 +35,8 @@ private:
 
 	unsigned int		m_RouterTimerID;
 
-	unsigned int		m_Cause;						//释放原因值
+	unsigned int		m_StatusCode;						//释放原因值
+	string				m_ReasonText;
 	bool				m_RemoteRelease;				//远端挂机
 	KFPC_CALL_FLAG		m_CallFlag;
 	unsigned int		m_FreeConfTimer;		//释放会议定时器
@@ -43,10 +46,31 @@ private:
 	time_t				m_ConnectTime;
 	time_t				m_ReleaseTime;
 	bool				m_ConfCreator;
-	string				m_FromIp;
+	//string				m_FromIp;
+
+//////////////////////////////////////////////////////////////
+	string					m_SIP_CallID;
+
+	string					m_PeerMediaIP;
+	unsigned short			m_PeerMediaPort;
+	AudioCodeCfg_t			m_AudioCode;
+
+	KFPC_Receive_Info_t		m_Receive_Info;
+	KFPC_From_t				m_From;
+	KFPC_To_t				m_To;
+
 protected:
 	void SetID(unsigned short val) { m_ID = val; }
 public:	
+
+	KFPC_Receive_Info_t& GetReceive_Info() { return m_Receive_Info; }
+	void SetReceive_Info(KFPC_Receive_Info_t& val) { m_Receive_Info = val; }
+
+	KFPC_From_t& GetFrom() { return m_From; }
+	void SetFrom(KFPC_From_t& val) { m_From = val; }
+
+	KFPC_To_t& GetTo() { return m_To; }
+	void SetTo(KFPC_To_t& val) { m_To = val; }
 
 	time_t GetConnectTime() const { return m_ConnectTime; }
 	void SetConnectTime(time_t val) { m_ConnectTime = val; }
@@ -66,10 +90,10 @@ public:
 	KFPC_CALL_FLAG GetCallFlag() const { return m_CallFlag; }
 	void SetCallFlag(KFPC_CALL_FLAG val) { m_CallFlag = val; }
 
-	void AppendMoreInfo(const char* val);
-	void AppendMoreInfo2Called(const char* val);
-	unsigned int GetCause() const { return m_Cause; }
-	void SetCause(unsigned int val) { m_Cause = val; }
+	//void AppendMoreInfo(const char* val);
+	//void AppendMoreInfo2Called(const char* val);
+	unsigned int GetCause() const { return m_StatusCode; }
+	void SetCause(unsigned int val) { m_StatusCode = val; }
 
 	unsigned int GetCallID_TIME();
 
@@ -94,7 +118,7 @@ public:
 
 	void ExeCmdQueue();
 	KFPC_DEVICE& GetDevice() { return m_Device; }
-	void SetDevice(KFPC_DEVICE& val) { m_Device = val; }
+	//void SetDevice(KFPC_DEVICE& val) { m_Device = val; }
 
 	unsigned long long& GetCallID() { return m_CallID; }
 	void SetCallID();
@@ -138,7 +162,8 @@ public:
 
 	virtual unsigned int AcceptCall();
 	virtual unsigned int AnswerCall();
-	virtual unsigned int ReleaseCall(int Cause);
+
+	virtual unsigned int ReleaseCall(int StatusCode,const char* ReasonText = "");
 	//virtual unsigned int CallOut(KFPC_DEVICE&	Device ,KFPC_TrunkGroup* pMyTrunkGroup,KFPC_SIP_Addr* pSipCallOutAddr,bool Overlap = false);	
 
 	virtual unsigned int AcceptCallAck(unsigned int	Result); 
@@ -149,9 +174,9 @@ public:
 
 	virtual unsigned int EVT_IncomingCall(KFPC_DEVICE&	Device);	
 
-	void SetMoreInfoTimer();
-	void SetSAMEvtTimer();
-	void ClearSAMEvtTimer();
+	//void SetMoreInfoTimer();
+	//void SetSAMEvtTimer();
+	//void ClearSAMEvtTimer();
 
 	virtual unsigned int EVT_AlertCall();
 	virtual unsigned int EVT_AnsweredCall();
@@ -164,8 +189,8 @@ public:
 	//virtual unsigned int EVT_MoreInfo(const char* Num);
 	
 
-	void ExecuteCmd( KFPC_BaseCommand* pCmd );
-	void CancelCmd();
+	//void ExecuteCmd( KFPC_BaseCommand* pCmd );
+	//void CancelCmd();
 	void CancelCmdQueue();
 
 	unsigned int ExecuteRspCmd(KFPC_BaseCommand* pCmd,unsigned int MsgID);
@@ -215,71 +240,78 @@ public:
 	//unsigned int Disconnect(unsigned short Mode = EV_ASYNC);
 	//unsigned int DisconnectMonitorIVR(unsigned short Mode = EV_ASYNC);
 
-	unsigned int RequestFaxChAck(char* pFaxServIP,unsigned short	FaxServRTPPort,int Result,int FaxMode);
-	unsigned int StartSendFaxAck(int Result);
-	unsigned int StopSendFaxAck(int Result);
-	unsigned int StartRecvFaxAck(int Result);
-	unsigned int StopRecvFaxAck(int Result);
-	unsigned int SendFaxCompleted(unsigned char PageNum,int Result);
-	unsigned int RecvFaxCompleted(unsigned char PageNum,int Result);
+	//unsigned int RequestFaxChAck(char* pFaxServIP,unsigned short	FaxServRTPPort,int Result,int FaxMode);
+	//unsigned int StartSendFaxAck(int Result);
+	//unsigned int StopSendFaxAck(int Result);
+	//unsigned int StartRecvFaxAck(int Result);
+	//unsigned int StopRecvFaxAck(int Result);
+	//unsigned int SendFaxCompleted(unsigned char PageNum,int Result);
+	//unsigned int RecvFaxCompleted(unsigned char PageNum,int Result);
 	//unsigned int DisconnectMixIVR(unsigned short Mode = EV_ASYNC);
-	unsigned int DisconnectCallInAbnormalStatus();
+	//unsigned int DisconnectCallInAbnormalStatus();
 
 	unsigned int Send_EVT_ReleasedCall(int cause);
 	unsigned int Send_EVT_AnsweredCall();
 	unsigned int Send_EVT_AlertCall();
 
-	unsigned int Send_EVT_PlayVoiceCompleted();
-	unsigned int Send_EVT_CollectDTMFCompleted(unsigned int  DigitCount,const char* Digits,unsigned int Result);
+	//unsigned int Send_EVT_PlayVoiceCompleted();
+	//unsigned int Send_EVT_CollectDTMFCompleted(unsigned int  DigitCount,const char* Digits,unsigned int Result);
 
-	void CancelCmdWithDSPError(unsigned int nReason);
-	void ProcessEstConfError(unsigned int nReason);
-	void ProcessRouteError(unsigned int nReason);
-	void ProcessFaxAppOffLine();
+	//void CancelCmdWithDSPError(unsigned int nReason);
+	//void ProcessEstConfError(unsigned int nReason);
+	//void ProcessRouteError(unsigned int nReason);
+	//void ProcessFaxAppOffLine();
 	/**
 	 * FullName:  	KFPC_Channel::ChangeConnectMode
 	 * @brief 		改变连接模式
 	 * @param[in,out] unsigned int ConnectMode 0为听说,1为只听
 	 * @return   	unsigned int
 	 */
-	unsigned int ChangeConnectMode(unsigned int ConnectMode);
+	//unsigned int ChangeConnectMode(unsigned int ConnectMode);
 
-	int StartFax();
-	void DoStartMediaAck(int Result);
-	void DoStopMediaAck(int Result);
+	//int StartFax();
+	//void DoStartMediaAck(int Result);
+	//void DoStopMediaAck(int Result);
 
-	int Voice2Fax();
-	void DoVoice2FaxAck(int Result);
+	//int Voice2Fax();
+	//void DoVoice2FaxAck(int Result);
 
 	unsigned int RequestFaxCh();
 	unsigned int StartSendFax(const char* pFileName,const char *pSenderIdent,const char *pSubAddress,const char *pPageHeaderInfo,const char *pIdentifier);
 	unsigned int StartRecvFax(const char* pFileName);
 	unsigned int StopRecvFax();
 	unsigned int StopSendFax();
-	void EVT_HookFlash();
-	void RecoverIVRForAgChannel();
-
+	
 	//void  OnRSP_API_TTS_TO_FILE(KFPC_RSP_API_TTS* pTTSMsg);
 
-	void ChannelParked();		//通道被保持
+	//void ChannelParked();		//通道被保持
 
-	unsigned int Send_MoreInfo(const char* Num);
-	unsigned int Send_MoreInfoAck(unsigned int Ret);
-	void UpdateMoreInfo2Called();
+	//unsigned int Send_MoreInfo(const char* Num);
+	//unsigned int Send_MoreInfoAck(unsigned int Ret);
+	//void UpdateMoreInfo2Called();
 
-	void DoMoreInfoTimeOut();
-	void DoSAMTimeOut();
-	void EVT_RecvInfo(unsigned int ulSerialNo,const char* pInfo);
+	//void DoMoreInfoTimeOut();
+	//void DoSAMTimeOut();
+	//void EVT_RecvInfo(unsigned int ulSerialNo,const char* pInfo);
 
-	MSML_DeleteWhen GetMSML_DeleteWhen() const;
-	void SetMSML_DeleteWhen(MSML_DeleteWhen val);
+	//MSML_DeleteWhen GetMSML_DeleteWhen() const;
+	//void SetMSML_DeleteWhen(MSML_DeleteWhen val);
 
-	unsigned int SIPSendInfoAck(unsigned short usCause,unsigned int ulSerialNo,const char* Body);
+	//unsigned int SIPSendInfoAck(unsigned short usCause,unsigned int ulSerialNo,const char* Body);
 
 	void Log();
 	void LogCDR();
 
 	void DoCmdTimeOut();
 	
+public:
+	const char* GetSIP_CallID() const { return m_SIP_CallID.c_str(); }
+	void SetSIP_CallID(const char* val) { m_SIP_CallID = val; }
+	unsigned short GetPeerMediaPort() const { return m_PeerMediaPort; }
+	void SetPeerMediaPort(unsigned short val) { m_PeerMediaPort = val; }
+	AudioCodeCfg_t& GetAudioCode() { return m_AudioCode; }
+	void SetAudioCode(const AudioCodeCfg_t& val) { m_AudioCode = val; }
+	std::string& GetPeerMediaIP() { return m_PeerMediaIP; }
+	void SetPeerMediaIP(const std::string& val) { m_PeerMediaIP = val; }
 };
 

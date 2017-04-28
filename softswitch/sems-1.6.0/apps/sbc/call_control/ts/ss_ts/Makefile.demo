@@ -1,0 +1,287 @@
+# Complier
+#CC =g++ -g -DLINUX -DKFPC_LOG_OUTPUT  -m32 -D_DEBUG -std=gnu++0x 
+CC =g++ -DLINUX -DKFPC_LOG_OUTPUT  -m32 -D_DEBUG -std=gnu++0x -DKFPC_COM_EXPORTS
+
+F=fPIC
+LF=shared
+kfpccom_ld = -lpthread
+SHARE = -Wl,-Bsymbolic
+
+# public
+PUBLIC_FILE = kfpc_compressfiletask \
+kfpc_linuxwinapi \
+kfpc_log \
+kfpc_mempool \
+kfpc_scanlogpath \
+kfpc_scanuncompressedlogfiletask \
+kfpc_sn32 \
+kfpc_sn64 \
+kfpc_threadpool \
+kfpc_threadtask \
+kfpc_threadtaskqueue \
+kfpc_time \
+kfpc_timer \
+md5 \
+kfpc_getmac \
+kfpc_guid	\
+kfpc_linuxwinnet \
+
+#libpcre++
+PCRECPP_FILE = pcre++ \
+get \
+replace \
+search \
+split \
+
+# kfpccom
+KFPCCOM_FILE = kfpc_acceptsocket \
+kfpc_api \
+kfpc_appbaseinfo \
+kfpc_appmanager \
+kfpc_clientsocket \
+kfpc_connectsocket \
+kfpc_msgfilter \
+kfpc_msgfiltermanager \
+kfpc_msgmanager \
+kfpc_msgqueue \
+kfpc_multicastserver \
+kfpc_roactor \
+kfpc_socketmanager \
+kfpc_tcpsocket \
+kfpc_msgthreadtask \
+kfpc_timerthreadtask \
+kfpc_udpmulticastsocket \
+kfpc_removehandlertask \
+# ThirdPark
+APR_INC = ../../ThirdPartyLib/apr/linux/inc
+#APR_INC = /usr/include/apr-1
+PCRE_INC = /usr/local/include
+#APR_FLAGS = -lapr-1
+APR_FLAGS =   -L../../ThirdPartyLib/apr/linux/lib -lapr-0
+PUB_INC = ../../kfpc_inc
+
+PUBLIC_DIR = ../../kfpc_public
+PCREPLUS_DIR = ../../ThirdPartyLib/libpcre++
+BUILD_DIR = .
+
+SRC_DIR = .\
+${PUBLIC_DIR} \
+${PCREPLUS_DIR} \
+${PUB_INC}
+
+INC_DIR = ${SRC_DIR} ${APR_INC} ${PCRE_INC} ${PUB_INC}
+OBJ_DIR = ${BUILD_DIR}/.obj
+
+vpath %.cpp ${SRC_DIR}
+vpath %.h ${SRC_DIR}
+vpath %.o ${OBJ_DIR}
+
+INCLUDE_FLAG = $(addprefix -I, ${INC_DIR})
+PUBLIC_OBJECT = $(addsuffix .o, ${PUBLIC_FILE})
+KFPCCOM_OBJECT = $(addsuffix .o, ${KFPCCOM_FILE})
+PCRECPP_OBJECT = $(addsuffix .o, ${PCRECPP_FILE})
+
+
+# Command lines
+
+MKOBJDIR = if [ -d ${OBJ_DIR} ]; then exit 0; else mkdir ${OBJ_DIR}; fi
+
+CLEAN = rm -rf ${OBJ_DIR} libkfpc_com.so
+
+	
+COMPLIE_CMD = ${CC} ${CPPFLAGS} -c $< -o ${OBJ_DIR}/$@ 	\
+	      	${INCLUDE_FLAG} 			\
+
+ECHO_OBJECT_CMD = echo -e "\t" $@
+
+OBJECTS = $(addprefix ${OBJ_DIR}/, ${PUBLIC_OBJECT} 	\
+			${KFPCCOM_OBJECT} 		\
+			${PCRECPP_OBJECT} 		\
+	  		${APRPACK_OBJECT})
+#LD_FLAGS = $(kfpccom_ld) -lz -lpcre++ -L/usr/local/lib -L/usr/local/apr/lib
+LD_FLAGS = $(kfpccom_ld) -lz -lpcre
+
+LINK_CMD = ${CC} -o $@  -$(F) ${SHARE}  -$(LF) ${OBJECTS} ${APR_FLAGS} ${LD_FLAGS}
+
+.PHONY: all
+
+all: TempDir libkfpc_com.so 
+
+TempDir:
+	@${MKOBJDIR}
+	
+libkfpc_com.so: ${PUBLIC_OBJECT} ${PCRECPP_OBJECT} ${KFPCCOM_OBJECT} 
+	@echo "Complier complete. Linking ....\n"
+	${LINK_CMD}	
+
+
+#mkdir /home/kfpc/lib
+	/bin/cp -f -R $@ /home/CloudShare/lib
+
+clean:
+	${CLEAN}
+
+# public
+
+kfpc_compressfiletask.o:${PUBLIC_DIR}/kfpc_compressfiletask.cpp \
+${PUBLIC_DIR}/kfpc_compressfiletask.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_linuxwinapi.o:${PUBLIC_DIR}/kfpc_linuxwinapi.cpp ${PUBLIC_DIR}/kfpc_linuxwinapi.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_linuxwinnet.o:${PUBLIC_DIR}/kfpc_linuxwinnet.cpp ${PUBLIC_DIR}/kfpc_linuxwinapi.h
+	${COMPLIE_CMD} 
+
+kfpc_log.o:${PUBLIC_DIR}/kfpc_log.cpp ${PUBLIC_DIR}/kfpc_log.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_mempool.o:${PUBLIC_DIR}/kfpc_mempool.cpp ${PUBLIC_DIR}/kfpc_mempool.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_scanlogpath.o:${PUBLIC_DIR}/kfpc_scanlogpath.cpp ${PUBLIC_DIR}/kfpc_scanlogpath.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_scanuncompressedlogfiletask.o:${PUBLIC_DIR}/kfpc_scanuncompressedlogfiletask.cpp ${PUBLIC_DIR}/kfpc_scanuncompressedlogfiletask.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_sn32.o:${PUBLIC_DIR}/kfpc_sn32.cpp ${PUBLIC_DIR}/kfpc_sn32.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_sn64.o:${PUBLIC_DIR}/kfpc_sn64.cpp ${PUBLIC_DIR}/kfpc_sn64.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_threadpool.o:${PUBLIC_DIR}/kfpc_threadpool.cpp ${PUBLIC_DIR}/kfpc_threadpool.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_threadtask.o:${PUBLIC_DIR}/kfpc_threadtask.cpp ${PUBLIC_DIR}/kfpc_threadtask.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_threadtaskqueue.o:${PUBLIC_DIR}/kfpc_threadtaskqueue.cpp ${PUBLIC_DIR}/kfpc_threadtaskqueue.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_timer.o:${PUBLIC_DIR}/kfpc_timer.cpp ${PUBLIC_DIR}/kfpc_timer.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_time.o:${PUBLIC_DIR}/kfpc_time.cpp ${PUBLIC_DIR}/kfpc_time.h
+	
+	${COMPLIE_CMD} 
+
+md5.o:${PUBLIC_DIR}/md5.c ${PUBLIC_DIR}/md5.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_getmac.o:${PUBLIC_DIR}/kfpc_getmac.cpp ${PUBLIC_DIR}/kfpc_getmac.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_guid.o:${PUBLIC_DIR}/kfpc_guid.cpp ${PUBLIC_DIR}/kfpc_guid.h
+	
+	${COMPLIE_CMD} 
+
+# pcre++
+pcre++.o:${PCREPLUS_DIR}/pcre++.cc ${PCREPLUS_DIR}/pcre++.h
+	
+	${COMPLIE_CMD} 
+
+get.o:${PCREPLUS_DIR}/get.cc
+	
+	${COMPLIE_CMD} 
+
+replace.o:${PCREPLUS_DIR}/replace.cc 
+	
+	${COMPLIE_CMD} 
+
+search.o:${PCREPLUS_DIR}/search.cc 
+	
+	@${COMPLIE_CMD}
+
+split.o:${PCREPLUS_DIR}/split.cc 
+	
+	@${COMPLIE_CMD}
+
+# kfpccom
+kfpc_acceptsocket.o:kfpc_acceptsocket.cpp kfpc_acceptsocket.h
+	
+	${COMPLIE_CMD} 
+	
+kfpc_api.o:kfpc_api.cpp kfpc_api.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_appbaseinfo.o:kfpc_appbaseinfo.cpp kfpc_appbaseinfo.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_appmanager.o:kfpc_appmanager.cpp kfpc_appmanager.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_clientsocket.o:kfpc_clientsocket.cpp kfpc_clientsocket.h
+	
+	${COMPLIE_CMD} 
+
+
+kfpc_connectsocket.o:kfpc_connectsocket.cpp kfpc_connectsocket.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_msgfilter.o:kfpc_msgfilter.cpp kfpc_msgfilter.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_msgfiltermanager.o:kfpc_msgfiltermanager.cpp kfpc_msgfiltermanager.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_msgmanager.o:kfpc_msgmanager.cpp kfpc_msgmanager.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_msgqueue.o:kfpc_msgqueue.cpp kfpc_msgqueue.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_multicastserver.o:kfpc_multicastserver.cpp kfpc_multicastserver.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_roactor.o:kfpc_roactor.cpp kfpc_roactor.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_socketmanager.o:kfpc_socketmanager.cpp kfpc_socketmanager.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_tcpsocket.o:kfpc_tcpsocket.cpp kfpc_tcpsocket.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_msgthreadtask.o:kfpc_msgthreadtask.cpp kfpc_msgthreadtask.h
+	
+	@${COMPLIE_CMD}
+
+kfpc_timerthreadtask.o:kfpc_timerthreadtask.cpp kfpc_timerthreadtask.h
+	
+	@${COMPLIE_CMD}
+
+kfpc_udpmulticastsocket.o:kfpc_udpmulticastsocket.cpp kfpc_udpmulticastsocket.h
+	
+	${COMPLIE_CMD} 
+
+kfpc_removehandlertask.o:kfpc_removehandlertask.cpp kfpc_removehandlertask.h
+	
+	${COMPLIE_CMD} 

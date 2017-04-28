@@ -1,7 +1,12 @@
 # Complier
-CC = g++ -g -DLINUX  -g -m32 -D_DEBUG -std=gnu++0x  -DUNIX -DLINUX_SERVICE
+CC = g++ -g -DLINUX  -g -m32 -D_DEBUG -std=gnu++0x  -DUNIX -DLINUX_SERVICE	-DSEMS_TS_API_EXPORTS
 
+F=fPIC
+LF=shared
 kfpccom_ld = -lpthread
+SHARE = -Wl,-Bsymbolic
+
+#kfpccom_ld = -lpthread
 
 # public
 PUBLIC_FILE = kfpc_compressfiletask \
@@ -31,15 +36,17 @@ replace \
 search \
 split \
 
+
+
 # TServer
 TSERVER_FILE = \
+sems_ts_api \
 KFPC_Channel \
 KFPC_ChMgr \
 KFPC_ChRes \
 KFPC_TServerConfigFile \
 KFPC_MonitorChMgr \
 KFPC_NodeMgr \
-KFPC_TServer \
 KFPC_TServerDef \
 KFPC_TServerMain \
 KFPC_ExeCmdIDTask \
@@ -59,12 +66,12 @@ KFPC_TrunkGroup \
 KFPC_TrunkGroupMgr \
 KFPC_EHNode \
 KFPC_ComApiHanderImp \
-KFPC_EH_ID2Str \
 KFPC_TServerAPIHandler \
 KFPC_TServerAPIHandlerImp \
 KFPC_TServerAPIPack \
 KFPC_CmdTimer \
-
+KFPC_Cmd_EVT_IncomingCall \
+kfpc_sipserver_api \
 
 #contact_center_public
 CONTACT_CENTER_PUBLIC_FILE= \
@@ -242,21 +249,21 @@ OBJECTS = $(addprefix ${OBJ_DIR}/, ${PUBLIC_OBJECT} 	\
 # LD_FLAGS = $(kfpccom_ld) -lisxapi -loamapi -lkfpc_com -lz -lpcre -L ../../kfpc_com/kfpc_com -L${ISXAPI_LIB} -lodbc -lapr-0 -ldl -lssl
 LD_FLAGS = $(kfpccom_ld) -L./lib -lkfpc_com -lz -lpcre  -lodbc -lapr-1 -ldl -lssl
 
-LINK_CMD = ${CC} -o $@ ${OBJECTS} ${APR_FLAGS} ${LD_FLAGS}  ${CPPFLAGS}
+LINK_CMD = ${CC} -o $@ ${OBJECTS} ${APR_FLAGS} ${LD_FLAGS}  ${CPPFLAGS} -$(F) ${SHARE}  -$(LF) 
 
 #PHONY 来显示的指名一个目标是伪目标，有两个作用一个是改善性能，另外一个是来避免冲突。
 .PHONY: all
 
-all: TempDir SS_TServer 
+all: TempDir libss_ts.so 
 
 TempDir:
 	@${MKOBJDIR}
 
-SS_TServer: ${PUBLIC_OBJECT} ${PCRECPP_OBJECT} ${KFPCCOM_OBJECT} ${TSERVER_OBJECT} ${LICENSESERVER_OBJECT} ${FAXSERVER_OBJECT} ${TTSSERVER_OBJECT} ${VOICESERVER_OBJECT} ${CONTACT_CENTER_PUBLIC_OBJECT} ${TINYXML_OBJECT}
+libss_ts.so: ${PUBLIC_OBJECT} ${PCRECPP_OBJECT} ${KFPCCOM_OBJECT} ${TSERVER_OBJECT} ${LICENSESERVER_OBJECT} ${FAXSERVER_OBJECT} ${TTSSERVER_OBJECT} ${VOICESERVER_OBJECT} ${CONTACT_CENTER_PUBLIC_OBJECT} ${TINYXML_OBJECT}
 	@echo "Complier complete. Linking ....\n"
 	
 	${LINK_CMD}
-	/bin/cp -f -R $@ /home/CloudShare/bin
+	/bin/cp -f -R $@ /home/CloudShare/lib
 clean:
 	@${CLEAN}
 
@@ -598,4 +605,13 @@ KFPC_TServerAPIPack.o:KFPC_TServerAPIPack.cpp
 	${COMPLIE_CMD} 
 
 KFPC_CmdTimer.o:KFPC_CmdTimer.cpp
+	${COMPLIE_CMD} 
+
+sems_ts_api.o:sems_ts_api.cpp
+	${COMPLIE_CMD} 
+
+KFPC_Cmd_EVT_IncomingCall.o:KFPC_Cmd_EVT_IncomingCall.cpp
+	${COMPLIE_CMD} 
+
+kfpc_sipserver_api.o:kfpc_sipserver_api.cpp
 	${COMPLIE_CMD} 

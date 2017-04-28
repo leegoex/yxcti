@@ -22,7 +22,7 @@
     <ProjectGuid>{1150D98D-1278-49C9-8A0C-FF93A1BC02B2}</ProjectGuid>
     <RootNamespace>ts</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <SccProjectName>"$/ts.root/ts", QGDAAAAA</SccProjectName>
+    <SccProjectName>"$/ts.root/ss_ts", QGDAAAAA</SccProjectName>
     <SccLocalPath>.</SccLocalPath>
     <SccProvider>MSSCCI:Microsoft Visual SourceSafe</SccProvider>
   </PropertyGroup>
@@ -195,6 +195,7 @@
     <ClInclude Include="control\KFPC_CmdMgr.h" />
     <ClInclude Include="control\KFPC_CmdThreadtask.h" />
     <ClInclude Include="control\KFPC_CmdTimer.h" />
+    <ClInclude Include="control\KFPC_Cmd_EVT_IncomingCall.h" />
     <ClInclude Include="kfpc_api\KFPC_ComApiHanderImp.h" />
     <ClInclude Include="kfpc_api\KFPC_LicenseSerAPIHandler.h" />
     <ClInclude Include="kfpc_api\KFPC_TServerAPIHandler.h" />
@@ -210,7 +211,6 @@
     <ClInclude Include="KFPC_ChRes.h" />
     <ClInclude Include="KFPC_ConfChannel.h" />
     <ClInclude Include="KFPC_EHNode.h" />
-    <ClInclude Include="KFPC_EH_ID2Str.h" />
     <ClInclude Include="kfpc_inc\kfpc_api.h" />
     <ClInclude Include="kfpc_inc\kfpc_comapierr.h" />
     <ClInclude Include="kfpc_inc\KFPC_EH_MsgID.h" />
@@ -243,6 +243,7 @@
     <ClInclude Include="kfpc_public\kfpc_timer.h" />
     <ClInclude Include="kfpc_public\kfpc_timerthreadpool.h" />
     <ClInclude Include="kfpc_public\md5.h" />
+    <ClInclude Include="kfpc_sipserver_api.h" />
     <ClInclude Include="KFPC_TServerDef.h" />
     <ClInclude Include="KFPC_TServerMain.h" />
     <ClInclude Include="servermgr\KFPC_TSLicSer.h" />
@@ -264,6 +265,7 @@
     <ClInclude Include="tinyxml\xpath_static.h" />
     <ClInclude Include="tinyxml\xpath_stream.h" />
     <ClInclude Include="tinyxml\xpath_syntax.h" />
+    <ClInclude Include="sems_ts_api.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cfg_mod\KFPC_TrunkGroup.cpp" />
@@ -294,6 +296,7 @@
     <ClCompile Include="control\KFPC_CmdMgr.cpp" />
     <ClCompile Include="control\KFPC_CmdThreadtask.cpp" />
     <ClCompile Include="control\KFPC_CmdTimer.cpp" />
+    <ClCompile Include="control\KFPC_Cmd_EVT_IncomingCall.cpp" />
     <ClCompile Include="kfpc_api\KFPC_ComApiHanderImp.cpp" />
     <ClCompile Include="kfpc_api\KFPC_LicenseSerAPIHandler.cpp" />
     <ClCompile Include="kfpc_api\KFPC_TServerAPIHandler.cpp" />
@@ -309,7 +312,6 @@
     <ClCompile Include="KFPC_ChRes.cpp" />
     <ClCompile Include="KFPC_ConfChannel.cpp" />
     <ClCompile Include="KFPC_EHNode.cpp" />
-    <ClCompile Include="KFPC_EH_ID2Str.cpp" />
     <ClCompile Include="kfpc_inc\KFPC_EH_MsgID.c" />
     <ClCompile Include="kfpc_inc\kfpc_error.c" />
     <ClCompile Include="kfpc_inc\kfpc_id.c" />
@@ -335,9 +337,11 @@
     <ClCompile Include="kfpc_public\kfpc_timer.cpp" />
     <ClCompile Include="kfpc_public\kfpc_timerthreadpool.cpp" />
     <ClCompile Include="kfpc_public\md5.c" />
+    <ClCompile Include="kfpc_sipserver_api.cpp" />
     <ClCompile Include="KFPC_TServer.cpp" />
     <ClCompile Include="KFPC_TServerDef.cpp" />
     <ClCompile Include="KFPC_TServerMain.cpp" />
+    <ClCompile Include="sems_ts_api.cpp" />
     <ClCompile Include="servermgr\KFPC_TSLicSer.cpp" />
     <ClCompile Include="servermgr\KFPC_TSLicSerMgr.cpp" />
     <ClCompile Include="servermgr\KFPC_VoiceSer.cpp" />
@@ -352,6 +356,8 @@
     <None Include="apr1\include\apr.hnw" />
     <None Include="apr1\include\apr.hw" />
     <None Include="Makefile" />
+    <None Include="Makefile.demo" />
+    <None Include="Makefile.ts" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="cfg\ss_tserver_config.xml" />

@@ -42,131 +42,131 @@ KFPC_Channel::~KFPC_Channel(void)
 {
 }
 
-unsigned int KFPC_Channel::Init(bool log)
-{
-	if(log)
-	{
-		INFO_LOG(m_CallID,"ChID:%u(Span:%u,Channel:%u)",m_ID,ChannelToSpan(m_ID),ChannelToTimeSlot(m_ID));
-	}
-
-	//下面主要针对会议
-	if(m_ReleaseTime == 0)
-	{
-		m_ReleaseTime=time(NULL);
-	}
-
-	LogCDR();
-
-	memset(&m_Device,0,sizeof(m_Device));
-	//m_CmdID = 0;
-	
-	m_DstAppID = 0;
-	SetStatus(KFPC_CH_Status_Idle);
-
-	m_ConType = ConType_CH_NULL;
-	//m_ActionType = KFPC_CHActionType_NULL;
-
-	//m_SwitchChRes = NULL;		/**< 与之连接的资源 */
-
-	//ClearCmdQueue();
-	//m_IVRType = CH_IVRType_NULL;		/**< IVR资源类型 */
-	//m_IVRChListCount = 0;		/**< IVR通道数 */
-	
-	//memset(m_IVRChList,0,sizeof(m_IVRChList));
-	//memset(m_Cdt,0,sizeof(MS_CDT)*KFPC_MAX_CH_IVR_SIZE);		/**< 会议方 */
-
-	//m_ConnectMode = SC_FULLDUP;
-	//m_FaxIPMCh = NULL;
-	//m_MSML_DeleteWhen = MSML_DelMode_NoMedia;
-
-	
-	//if(m_SignalType == KFPC_SignalType_SIP && (NULL != m_CallHandlerRes) )
-	//{
-	//	m_CallHandlerRes->RecoverResource();
-
-		//unsigned int SIPID = m_CallHandlerRes->GetID();
-
-		//if( SIPID%2 == 0)
-		//{
-		//	m_pNode->m_SipChMgr.RecoverCallOutSIPCh((KFPC_SipCh*)m_CallHandlerRes);
-		//}	
-
-
-		//if(m_IPMCh != NULL)
-		//{
-		//	//recover
-		//	KFPC_EHNode* pEHNode = GetNode();
-		//	pEHNode->m_VOIPMgr.RecoverIPMCh(m_IPMCh);
-		//	SetXiopCh(NULL);
-		//}
-	//}
-
-	//if(NULL != m_CallHandlerRes)
-	//{
-	//	m_CallHandlerRes->Init(log);
-	//}
-
-
-	//if(m_ChType == CH_TYPE_CONF)
-	//{
-	//	if(NULL != m_ConfRes )
-	//	{
-	//		m_ConfRes->Init(log);
-	//	}	
-	//}
-	//else
-	//{
-	//	m_ConfRes = NULL;			/**< 相关的会议 */
-	//}
-
-
-	//这个放到最后方便log输出
-	
-	ClearCallID();
-	m_RouterTimerID = 0;
-
-	//memset(&m_RedirectingAttr,0,sizeof(m_RedirectingAttr));
-	//memset(&m_CallerNumAttr,0,sizeof(m_CallerNumAttr));
-	//m_CalledNOA = 0;
-	//m_OrgCalledNOA = 0;
-	//m_DiaFlag = 0;
-	//m_FlowNum = 0;
-	//m_AppSpecificData = 0;
-	//m_RelMode = CHANNEL_RELMODE_PARK;
-	m_Cause = 0;
-
-	//if(m_ChType == CH_TYPE_CONF)
-	//{
-	//	m_CallFlag = CALL_FLAG_CONF;
-	//}
-	//else
-	{
-		m_CallFlag = CALL_FLAG_IN;
-	}
-
-	
-	//m_MoreInfoTimeOutID = 0;
-
-	//m_OverlapTimeOut = 0;
-	//m_MaxCalledNumLength = 0;
-	//m_MoreInfoBuf = "";
-	//m_MoreInfo = "";
-	//m_ReqMoreinfo = false;
-	m_InitTime = 0;
-	m_AnswerTime = 0;
-	m_ConnectTime = 0;
-	m_ReleaseTime = 0;
-
-	//m_SAMEvtTimeOut = 0;
-	m_RemoteRelease = false;
-	m_SessionCallID = 0;
-	//m_Ip = "";
-	//m_ConfCreator = false;
-	m_Cause = 0;
-	//m_MonitorIVRCh = NULL;
-	//m_PlayApiFlag = 0;
-	return 0;
-}
+//unsigned int KFPC_Channel::Init(bool log)
+//{
+//	if(log)
+//	{
+//		INFO_LOG(m_CallID,"ChID:%u(Span:%u,Channel:%u)",m_ID,ChannelToSpan(m_ID),ChannelToTimeSlot(m_ID));
+//	}
+//
+//	//下面主要针对会议
+//	if(m_ReleaseTime == 0)
+//	{
+//		m_ReleaseTime=time(NULL);
+//	}
+//
+//	LogCDR();
+//
+//	memset(&m_Device,0,sizeof(m_Device));
+//	//m_CmdID = 0;
+//	
+//	m_DstAppID = 0;
+//	SetStatus(KFPC_CH_Status_Idle);
+//
+//	m_ConType = ConType_CH_NULL;
+//	//m_ActionType = KFPC_CHActionType_NULL;
+//
+//	//m_SwitchChRes = NULL;		/**< 与之连接的资源 */
+//
+//	//ClearCmdQueue();
+//	//m_IVRType = CH_IVRType_NULL;		/**< IVR资源类型 */
+//	//m_IVRChListCount = 0;		/**< IVR通道数 */
+//	
+//	//memset(m_IVRChList,0,sizeof(m_IVRChList));
+//	//memset(m_Cdt,0,sizeof(MS_CDT)*KFPC_MAX_CH_IVR_SIZE);		/**< 会议方 */
+//
+//	//m_ConnectMode = SC_FULLDUP;
+//	//m_FaxIPMCh = NULL;
+//	//m_MSML_DeleteWhen = MSML_DelMode_NoMedia;
+//
+//	
+//	//if(m_SignalType == KFPC_SignalType_SIP && (NULL != m_CallHandlerRes) )
+//	//{
+//	//	m_CallHandlerRes->RecoverResource();
+//
+//		//unsigned int SIPID = m_CallHandlerRes->GetID();
+//
+//		//if( SIPID%2 == 0)
+//		//{
+//		//	m_pNode->m_SipChMgr.RecoverCallOutSIPCh((KFPC_SipCh*)m_CallHandlerRes);
+//		//}	
+//
+//
+//		//if(m_IPMCh != NULL)
+//		//{
+//		//	//recover
+//		//	KFPC_EHNode* pEHNode = GetNode();
+//		//	pEHNode->m_VOIPMgr.RecoverIPMCh(m_IPMCh);
+//		//	SetXiopCh(NULL);
+//		//}
+//	//}
+//
+//	//if(NULL != m_CallHandlerRes)
+//	//{
+//	//	m_CallHandlerRes->Init(log);
+//	//}
+//
+//
+//	//if(m_ChType == CH_TYPE_CONF)
+//	//{
+//	//	if(NULL != m_ConfRes )
+//	//	{
+//	//		m_ConfRes->Init(log);
+//	//	}	
+//	//}
+//	//else
+//	//{
+//	//	m_ConfRes = NULL;			/**< 相关的会议 */
+//	//}
+//
+//
+//	//这个放到最后方便log输出
+//	
+//	ClearCallID();
+//	m_RouterTimerID = 0;
+//
+//	//memset(&m_RedirectingAttr,0,sizeof(m_RedirectingAttr));
+//	//memset(&m_CallerNumAttr,0,sizeof(m_CallerNumAttr));
+//	//m_CalledNOA = 0;
+//	//m_OrgCalledNOA = 0;
+//	//m_DiaFlag = 0;
+//	//m_FlowNum = 0;
+//	//m_AppSpecificData = 0;
+//	//m_RelMode = CHANNEL_RELMODE_PARK;
+//	m_StatusCode = 0;
+//
+//	//if(m_ChType == CH_TYPE_CONF)
+//	//{
+//	//	m_CallFlag = CALL_FLAG_CONF;
+//	//}
+//	//else
+//	{
+//		m_CallFlag = CALL_FLAG_IN;
+//	}
+//
+//	
+//	//m_MoreInfoTimeOutID = 0;
+//
+//	//m_OverlapTimeOut = 0;
+//	//m_MaxCalledNumLength = 0;
+//	//m_MoreInfoBuf = "";
+//	//m_MoreInfo = "";
+//	//m_ReqMoreinfo = false;
+//	m_InitTime = 0;
+//	m_AnswerTime = 0;
+//	m_ConnectTime = 0;
+//	m_ReleaseTime = 0;
+//
+//	//m_SAMEvtTimeOut = 0;
+//	m_RemoteRelease = false;
+//	m_SessionCallID = 0;
+//	//m_Ip = "";
+//	//m_ConfCreator = false;
+//	m_StatusCode = 0;
+//	//m_MonitorIVRCh = NULL;
+//	//m_PlayApiFlag = 0;
+//	return 0;
+//}
 
 void KFPC_Channel::Reset(bool log )
 {	
@@ -174,35 +174,8 @@ void KFPC_Channel::Reset(bool log )
 	{
 		INFO_LOG(0,"ChID:%u",m_ID);
 	}
-	m_CmdIDQueue.clear(); 
-	//m_CallHandlerRes = NULL;
-	//m_SignalType = KFPC_SignalType_ClearChannel;
 
-	memset(&m_Device,0,sizeof(m_Device));
-	//memset(m_IVRChList,0,sizeof(m_IVRChList));
-	//memset(&m_Cdt,0,sizeof(MS_CDT)*KFPC_MAX_CH_IVR_SIZE);		/**< 会议方 */
-
-	m_CmdID = 0;
-	ClearCallID();
-	m_DstAppID = 0;
-	m_ConType = ConType_CH_NULL;
-	
-	//m_SwitchChRes = NULL;		/**< 与之连接的资源 */
-
-	//if(m_ChType != CH_TYPE_CONF)
-	//{
-	//	m_ConfRes = NULL;			/**< 相关的会议 */
-	//}
-
-	//m_IVRType = CH_IVRType_NULL;		/**< IVR资源类型 */
-	//m_IVRChListCount = 0;		/**< IVR通道数 */
-
-	//m_ActionType = KFPC_CHActionType_NULL;
-
-	//m_ConnectMode = SC_FULLDUP;
-	//m_FaxIPMCh = NULL;
-
-	if(log)
+	if (log)
 	{
 		SetStatus(KFPC_CH_Status_Unready);
 	}
@@ -211,52 +184,39 @@ void KFPC_Channel::Reset(bool log )
 		m_Status = KFPC_CH_Status_Unready;
 	}
 	
-	
+	m_ConType			= ConType_CH_NULL;						/**< 连接类型 */
+	m_SessionCallID		= 0;
+	//m_CallID			= 0;						/**< Call ID */
 
-	m_RouterTimerID = 0;
+	m_CmdID				= 0;							/**< 当前正在执行CMD  ID  */
+	//KFPC_CmdIDList		m_CmdIDQueue;						/**< 命令列表 */
+	memset(&m_Device,0,sizeof(m_Device));
 
-	//memset(&m_RedirectingAttr,0,sizeof(m_RedirectingAttr));
-	//memset(&m_CallerNumAttr,0,sizeof(m_CallerNumAttr));
-	//m_CalledNOA = 0;
-	//m_OrgCalledNOA = 0;
-	//m_DiaFlag = 0;
-	//m_FlowNum = 0;
-	//m_AppSpecificData = 0;
-	m_Cause = 0;
-	
-	//if(m_ChType == CH_TYPE_CONF)
-	//{
-	//	m_CallFlag = CALL_FLAG_CONF;
-	//}
-	//else
-	{
-		m_CallFlag = CALL_FLAG_IN;
-	}
+	m_DstAppID			= 0;			/**< 对端AppID */
+	m_RouterTimerID		= 0;
+	m_FreeConfTimer		= 0;		//释放会议定时器
 
-	//m_MoreInfoTimeOutID = 0;
+	m_StatusCode		= 0;						//释放原因值
+	m_ReasonText		= "";
+	m_RemoteRelease		= false;				//远端挂机
+	m_CallFlag			= CALL_FLAG_OUT;
 
-	//m_OverlapTimeOut = 0;
-	//m_MaxCalledNumLength = 0;
 
-	//m_MoreInfoBuf = "";
-	//m_MoreInfo = "";
-	//m_ReqMoreinfo = false;
-	m_InitTime = 0;
-	m_AnswerTime = 0;
-	m_ConnectTime = 0;
-	m_ReleaseTime = 0;
-	//m_SAMEvtTimeOut = 0;
-	//m_RelMode = CHANNEL_RELMODE_PARK;
-	m_RemoteRelease = false;
-	m_SessionCallID = 0;
-	//m_Ip = "";
-	//m_ConfCreator = false;
-	m_Cause = 0;
-	//m_MonitorIVRCh = NULL;
-	//m_PlayApiFlag = 0;
-	//m_MSML_DeleteWhen = MSML_DelMode_NoMedia;
-	//Init(log);
+	m_InitTime			= 0;
+	m_AnswerTime		= 0;
+	m_ConnectTime		= 0;
+	m_ReleaseTime		= 0;
+	m_ConfCreator		= false;
+	m_SIP_CallID		= "";
 
+	m_PeerMediaIP		= "";
+	m_PeerMediaPort		= 0;
+	m_AudioCode.Clear();
+
+	m_Receive_Info.Clear();
+	m_From.Clear();
+	m_To.Clear();
+	ClearCallID();
 }
 
 void KFPC_Channel::SetStatus( KFPC_Ch_Status val )
@@ -392,7 +352,7 @@ unsigned int KFPC_Channel::AnswerCall()
 	return 0;
 }
 //
-unsigned int KFPC_Channel::ReleaseCall( int Cause )
+unsigned int KFPC_Channel::ReleaseCall(int StatusCode, const char* ReasonText)
 {
 // 	if(NULL == m_CallHandlerRes)
 // 	{
@@ -588,8 +548,8 @@ unsigned int KFPC_Channel::CallOutAck( unsigned int Result,unsigned char Cause )
 //
 unsigned int KFPC_Channel::EVT_IncomingCall( KFPC_DEVICE& Device )
 {
-	//SetCallID();
-	//SetCallFlag(CALL_FLAG_IN);
+	SetCallID();
+	SetCallFlag(CALL_FLAG_IN);
 	
 	INFO_LOG(m_CallID,"ChID:%u(Span:%u,Channel:%u) Caller:%s,Called:%s,OrgCalled:%s,RedDirNo:%s,TrunkGroup:%s.",
 		m_ID,ChannelToSpan(m_ID),ChannelToTimeSlot(m_ID),
@@ -600,99 +560,31 @@ unsigned int KFPC_Channel::EVT_IncomingCall( KFPC_DEVICE& Device )
 		Device.TrunkGroup
 		);
 
-	//KFPC_OverlapCfg*	pOverlapCfg = KFPC_MoreInfCfg::GetInstance()->GetOverlapCfg(m_ID);
 
+	KFPC_BaseCommand*	pCmd = KFPC_CmdMgrInstance->Create_Cmd_EVT_IncomingCall(this);
 
-	//if(pOverlapCfg != NULL)
-	//{
-	//	if(pOverlapCfg->GetSAMEventTimeOut() > 0)
-	//	{
-	//		SetSAMEvtTimeOut(pOverlapCfg->GetSAMEventTimeOut());
-	//	}
-	//}
+	if(m_CmdID == 0)
+	{
+		//静态执行CMD
+		//EH_Cmd_EVT_IncomingCall	Cmd_IncomingCall(m_CallID,m_DstAppID,0,0,Device);
 
-	//if(NULL != pOverlapCfg &&
-	//	pOverlapCfg->GetTimeout() > 0 &&
-	//	pOverlapCfg->GetCallednumlength() > 0)
-	//{
+		SetCmdID(pCmd->GetID(),PREFIX_EXPRESSION_VALUE);
 
+		//Cmd_IncomingCall.Execute2();
+		//SetCmdID(0,PREFIX_EXPRESSION_VALUE);
+		
+		KFPC_CmdMgrInstance->ExecuteCmd(this,pCmd);
 
-	//	SetDevice(Device);
+		
+	}
+	else
+	{
+		//放在队列
+		WARNING_LOG(0, "CmdID:%u busy.",m_CmdID);
+		PushCmdID(pCmd->GetID());
+	}
+	
 
-	//	KFPC_CalledPrefix*	pCalledPrefix = KFPC_MoreInfCfg::GetInstance()->GetCalledPrefix(Device.CalledNO);
-
-	//	if(NULL != pCalledPrefix)
-	//	{
-	//		if(pCalledPrefix->GetCallednumlength() <= strlen(m_Device.CalledNO))
-	//		{
-	//			KFPC_BaseCommand*	pCmd = KFPC_CmdMgrInstance->Create_Cmd_EVT_IncomingCall(this,Device);
-
-	//			if(m_CmdID == 0)
-	//			{
-	//				//静态执行CMD
-	//				SetCmdID(pCmd->GetID(),PREFIX_EXPRESSION_VALUE);
-	//				ExecuteCmd(pCmd);
-	//			}
-	//			else
-	//			{
-	//				//放在队列
-	//				PushCmdID(pCmd->GetID());
-	//			}
-
-	//			if(GetSAMEvtTimeOut() > 0)
-	//			{
-	//				SetSAMEvtTimer();
-	//			}
-
-
-	//			return 0;
-	//		}
-	//		else
-	//		{
-	//			SetOverlapTimeOut(pCalledPrefix->GetTimeout());
-	//			SetMaxCalledNumLength(pCalledPrefix->GetCallednumlength());
-	//		}
-
-	//	}
-	//	else
-	//	{
-	//		SetOverlapTimeOut(pOverlapCfg->GetTimeout());
-	//		SetMaxCalledNumLength(pOverlapCfg->GetCallednumlength());
-	//	}
-
-	//	SetMoreInfoTimer();
-
-	//	SetStatus(KFPC_CH_Status_WaitMoreInfo);
-
-	//}
-	//else
-	//{
-	//	KFPC_BaseCommand*	pCmd = KFPC_CmdMgrInstance->Create_Cmd_EVT_IncomingCall(this,Device);
-
-	//	if(m_CmdID == 0)
-	//	{
-	//		//静态执行CMD
-	//		//EH_Cmd_EVT_IncomingCall	Cmd_IncomingCall(m_CallID,m_DstAppID,0,0,Device);
-
-	//		SetCmdID(pCmd->GetID(),PREFIX_EXPRESSION_VALUE);
-
-	//		//Cmd_IncomingCall.Execute2();
-	//		//SetCmdID(0,PREFIX_EXPRESSION_VALUE);
-	//	
-	//		ExecuteCmd(pCmd);
-
-	//	
-	//	}
-	//	else
-	//	{
-	//		//放在队列
-	//	
-
-	//		PushCmdID(pCmd->GetID());
-	//	}
-	//
-	//	
-	//}
 
 	return 0;
 }
@@ -888,32 +780,33 @@ unsigned int KFPC_Channel::PopCmdID()
 	INFO_LOG(m_CallID,"ChID:%u,CmdID:%u Cmd list size:%d",m_CallID,CmdID,m_CmdIDQueue.size());
 	return CmdID;
 }
-//
-//void KFPC_Channel::SetCallID()
-//{
-//	if(m_CallID != 0)
-//	{
-//		ERROR_LOG(m_CallID,"ChID:%u(Span:%u,Channel:%u) CallID is not 0",m_ID,ChannelToSpan(m_ID),ChannelToTimeSlot(m_ID));
-//		
-//	}
-//	m_InitTime = time(NULL);
-//
-//	KFPC_CallID	CallID;
-//	CallID.CallIDInfo.ChID = m_ID;
-//	CallID.CallIDInfo.AppID = KFPC_GetLibParam()->AppInfo.AppID;
-//	unsigned long long T = (m_InitTime - KFPC_START_TIME);
-//	CallID.CallIDInfo.Time = (unsigned int)T;
-//
-//	m_CallID = CallID.CallID;
-//	g_CallCount++;
-//	
-//	char TimeStr[128];
-//	TimeToStr(TimeStr,GetCallID_TIME()+KFPC_START_TIME);
-//	
-//
-//	DEBUG_LOG(m_CallID,"ChID:%u(Span:%u,Channel:%u) CallCount:%u,ChannelType:%s,CallIDTime:%s",m_ID,ChannelToSpan(m_ID),ChannelToTimeSlot(m_ID),g_CallCount,ChTypeToStr(m_ChType),TimeStr);
-//}
-//
+
+void KFPC_Channel::SetCallID()
+{
+	if(m_CallID != 0)
+	{
+		ERROR_LOG(m_CallID,"ChID:%u(Span:%u,Channel:%u) CallID is not 0",m_ID,ChannelToSpan(m_ID),ChannelToTimeSlot(m_ID));
+		
+	}
+
+	m_InitTime = time(NULL);
+
+	KFPC_CallID	CallID;
+	CallID.CallIDInfo.ChID = m_ID;
+	CallID.CallIDInfo.AppID = KFPC_GetLibParam()->AppInfo.AppID;
+	unsigned long long T = (m_InitTime - KFPC_START_TIME);
+	CallID.CallIDInfo.Time = (unsigned int)T;
+
+	m_CallID = CallID.CallID;
+	g_CallCount++;
+	
+	char TimeStr[128];
+	TimeToStr(TimeStr,GetCallID_TIME()+KFPC_START_TIME);
+	
+
+	DEBUG_LOG(m_CallID,"ChID:%u(Span:%u,Channel:%u) CallCount:%u,CallIDTime:%s",m_ID,ChannelToSpan(m_ID),ChannelToTimeSlot(m_ID),g_CallCount,TimeStr);
+}
+
 int KFPC_Channel::GetHandle()
 {
 	//if(m_CallHandlerRes != NULL)
@@ -3479,22 +3372,22 @@ unsigned int KFPC_Channel::Send_EVT_ReleasedCall( int cause )
 //	return 0;
 //}
 //
-//void KFPC_Channel::SetDstAppID( unsigned int val )
-//{
-//	DEBUG_LOG(m_CallID,"ChID:%u DstAppID:%u-->DstAppID:%u",m_ID,m_DstAppID,val);
-//	m_DstAppID = val;
-//}
+void KFPC_Channel::SetDstAppID( unsigned int val )
+{
+	DEBUG_LOG(m_CallID,"ChID:%u DstAppID:%u-->DstAppID:%u",m_ID,m_DstAppID,val);
+	m_DstAppID = val;
+}
 //
 //
-//unsigned int KFPC_Channel::GetCallID_TIME()
-//{
-//	KFPC_CallID*	pCallID;
-//	
-//	pCallID = (KFPC_CallID*)&m_CallID;
-//	
-//	return pCallID->CallIDInfo.Time;
-//}
-//
+unsigned int KFPC_Channel::GetCallID_TIME()
+{
+	KFPC_CallID*	pCallID;
+
+	pCallID = (KFPC_CallID*)&m_CallID;
+
+	return pCallID->CallIDInfo.Time;
+}
+
 //void KFPC_Channel::ChannelParked()
 //{
 //#ifdef TSERVER_GL
@@ -4357,9 +4250,9 @@ void KFPC_Channel::LogCDR()
 		TalkTime,
 		m_RemoteRelease,
 		m_SessionCallID,
-		m_FromIp.c_str(),
+		m_Receive_Info.FromIp.c_str(),
 		m_ConfCreator,
-		m_Cause);
+		m_StatusCode);
 
 	if (m_CallID > 0)
 	{
@@ -4399,9 +4292,9 @@ void KFPC_Channel::LogCDR()
 			TalkTime,
 			m_RemoteRelease,
 			m_SessionCallID,
-			m_FromIp.c_str(),
+			m_Receive_Info.FromIp.c_str(),
 			m_ConfCreator,
-			m_Cause);
+			m_StatusCode);
 
 #ifndef TSERVER_NODB
 

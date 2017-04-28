@@ -88,6 +88,10 @@ class SBCCallLeg : public CallLeg, public CredentialHolder
   /** common logger for RTP/RTCP and SIP packets */
   msg_logger *logger;
 
+  /// Unique call id created by ts server
+  /// Added by hulg 2017/04/22
+  unsigned long long TSCallID;
+
   void setLogger(msg_logger *_logger);
 
   void fixupCCInterface(const string& val, CCInterface& cc_if);
@@ -203,6 +207,11 @@ class SBCCallLeg : public CallLeg, public CredentialHolder
 
   virtual void setMediaSession(AmB2BMedia *new_session);
   virtual void computeRelayMask(const SdpMedia &m, bool &enable, PayloadMask &mask);
+
+  /// TS call id set/get
+  /// Added by hulg 2017/04/22
+  void setTSCallID(unsigned long long id) { TSCallID = id; }
+  unsigned long long getTSCallID() { return TSCallID; }
 
  protected:
   /** set to true once CCStart passed to call CCEnd implicitly (from onStop)

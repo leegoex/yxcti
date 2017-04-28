@@ -437,9 +437,6 @@
     <ClInclude Include="control\KFPC_CmdMgr.h">
       <Filter>control</Filter>
     </ClInclude>
-    <ClInclude Include="KFPC_EH_ID2Str.h">
-      <Filter>Define</Filter>
-    </ClInclude>
     <ClInclude Include="kfpc_api\KFPC_LicenseSerAPIHandler.h">
       <Filter>kfpc_api</Filter>
     </ClInclude>
@@ -463,6 +460,11 @@
     </ClInclude>
     <ClInclude Include="KFPC_ChRes.h">
       <Filter>源文件</Filter>
+    </ClInclude>
+    <ClInclude Include="sems_ts_api.h" />
+    <ClInclude Include="kfpc_sipserver_api.h" />
+    <ClInclude Include="control\KFPC_Cmd_EVT_IncomingCall.h">
+      <Filter>control</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -667,9 +669,6 @@
     <ClCompile Include="control\KFPC_CmdMgr.cpp">
       <Filter>control</Filter>
     </ClCompile>
-    <ClCompile Include="KFPC_EH_ID2Str.cpp">
-      <Filter>Define</Filter>
-    </ClCompile>
     <ClCompile Include="kfpc_api\KFPC_LicenseSerAPIHandler.cpp">
       <Filter>kfpc_api</Filter>
     </ClCompile>
@@ -694,6 +693,11 @@
     <ClCompile Include="KFPC_ChRes.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="sems_ts_api.cpp" />
+    <ClCompile Include="kfpc_sipserver_api.cpp" />
+    <ClCompile Include="control\KFPC_Cmd_EVT_IncomingCall.cpp">
+      <Filter>control</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="tinyxml\tinyxpath.lib">
@@ -714,6 +718,8 @@
       <Filter>apr1\include</Filter>
     </None>
     <None Include="Makefile" />
+    <None Include="Makefile.ts" />
+    <None Include="Makefile.demo" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="cfg\ss_tserver_config.xml">

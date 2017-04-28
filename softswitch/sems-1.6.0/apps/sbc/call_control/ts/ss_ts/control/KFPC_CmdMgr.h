@@ -3,7 +3,7 @@
 #include "KFPC_BaseCmdMgr.h"
 #include "KFPC_Channel.h"
 
-//#include "KFPC_Cmd_EH_EVT_IncomingCall.h"
+#include "KFPC_Cmd_EVT_IncomingCall.h"
 //#include "KFPC_Cmd_EH_StopPlay.h"
 //#include "KFPC_Cmd_EH_StopRecord.h"
 //#include "KFPC_Cmd_EH_Disconnect.h"
@@ -102,9 +102,9 @@ public:
 	KFPC_CmdMgr(void);
 	~KFPC_CmdMgr(void);
 
-//
-//	EH_Cmd_EVT_IncomingCall* Create_Cmd_EVT_IncomingCall(KFPC_Channel* pCh,KFPC_DEVICE& Device);
-//
+
+	EH_Cmd_EVT_IncomingCall* Create_Cmd_EVT_IncomingCall(KFPC_Channel* pCh);
+
 //	KFPC_Cmd_StopRecord* Create_Cmd_StopRecord(KFPC_Channel* pCh,
 //		unsigned int AppID,
 //		unsigned int UserContext1,

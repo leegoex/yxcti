@@ -314,31 +314,31 @@ public:
 	SS_TServerConfigFile(void);
 	~SS_TServerConfigFile(void);
 
-	/**
-	 * FullName:  	KFPC_TServerConfigFile::GeteHangComIp
-	 * @brief 		获得EH MC IP
-	 * @param[in,out] char * Ip
-	 * @return   	unsigned int 成功返回0，失败返回错误代码
-	 */
-	unsigned int GeteHangComIp(char* Ip);
+	///**
+	// * FullName:  	KFPC_TServerConfigFile::GeteHangComIp
+	// * @brief 		获得EH MC IP
+	// * @param[in,out] char * Ip
+	// * @return   	unsigned int 成功返回0，失败返回错误代码
+	// */
+	//unsigned int GeteHangComIp(char* Ip);
 
-	/**
-	 * FullName:  	KFPC_TServerConfigFile::GeteHangComPort
-	 * @brief 		获得EH MC port
-	 * @param[in,out] unsigned int & Port
-	 * @return   	unsigned int 成功返回0，失败返回错误代码
-	 */
-	unsigned int GeteHangComPort(unsigned int& Port);
+	///**
+	// * FullName:  	KFPC_TServerConfigFile::GeteHangComPort
+	// * @brief 		获得EH MC port
+	// * @param[in,out] unsigned int & Port
+	// * @return   	unsigned int 成功返回0，失败返回错误代码
+	// */
+	//unsigned int GeteHangComPort(unsigned int& Port);
 
-	/**
-	 * FullName:  	KFPC_TServerConfigFile::GeteHangComKeeyAlive
-	 * @brief 		获得EH Keep live 
-	 * @param[in,out] unsigned int & KeepAlive
-	 * @return   	unsigned int  成功返回0，失败返回错误代码
-	 */
-	unsigned int GeteHangComKeepAlive(unsigned int& KeepAlive);
+	///**
+	// * FullName:  	KFPC_TServerConfigFile::GeteHangComKeeyAlive
+	// * @brief 		获得EH Keep live 
+	// * @param[in,out] unsigned int & KeepAlive
+	// * @return   	unsigned int  成功返回0，失败返回错误代码
+	// */
+	//unsigned int GeteHangComKeepAlive(unsigned int& KeepAlive);
 
-	unsigned int GeteHangComSipPort(unsigned int& Port);
+	//unsigned int GeteHangComSipPort(unsigned int& Port);
 
 
 	KFPC_TrunkGroupMgr *GetTrunkGroupMgr();
@@ -417,7 +417,7 @@ private:
 	int GetMonitorCfg();
 
 	int GetRecordCfg();
-	int GetContactIPMap();
+	//int GetContactIPMap();
 	unsigned int GetIPMap(TiXmlElement *pElement);
 	int GetEchoCancelCfg();
 protected:

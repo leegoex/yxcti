@@ -22,6 +22,7 @@ KFPC_ConfigFile::~KFPC_ConfigFile(void)
 
 int KFPC_ConfigFile::LoadConfigFile(const char* pFileName)
 {
+
 	strncpy(m_FileName,pFileName,KFPC_MAX_FILE_NAME-1);
 
 	INFO_LOG(0,"FileName:%s",m_FileName);
